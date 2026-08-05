@@ -25,7 +25,7 @@ const GALLERY_IMAGES = [
   "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/c6dd47f0-2861-492c-adb3-6e24fea94604_compressed_DSC09287.webp",
   "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/a6c3cb80-4b8f-440a-91a2-bce9534d73a4_compressed_DSC09323.webp",
   "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/f6a3471e-f76f-4b4f-a542-f5c0404dda9d_compressed_DSC09364.webp",
-  "https://res.cloudinary.com/dnyvkptxb/image/upload/v1785922527/Villa_1_-_Ground_Floor_Plan_d6ihkf.png",
+  "https://res.cloudinary.com/dnyvkptxb/image/upload/v1785936540/Villa_1_-_Ground_Floor_Plan_n59tb4.png",
 ];
 
 interface LBImage {
