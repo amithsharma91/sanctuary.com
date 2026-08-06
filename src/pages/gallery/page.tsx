@@ -158,6 +158,7 @@ export default function Gallery() {
                     const isResidential = allGalleryImages[lightboxIndex]?.projectSlug && residentialSlugs.includes(currentLightboxImage.projectSlug);
                     const isCommercial = allGalleryImages[lightboxIndex]?.projectSlug && commercialSlugs.includes(currentLightboxImage.projectSlug);
                     const isHospitality = allGalleryImages[lightboxIndex]?.projectSlug && hospitalitySlugs.includes(currentLightboxImage.projectSlug);
+                    const isPrefab = allGalleryImages[lightboxIndex]?.projectSlug && prefabSlugs.includes(currentLightboxImage.projectSlug);
                     
                     if (isResidential) {
                       navigate(`/projects/residential/${currentLightboxImage.projectSlug}`);
@@ -165,6 +166,8 @@ export default function Gallery() {
                       navigate(`/projects/commercial/${currentLightboxImage.projectSlug}`);
                     } else if (isHospitality) {
                       navigate(`/projects/hospitality/${currentLightboxImage.projectSlug}`);
+                    } else if (isPrefab) {
+                      navigate(`/projects/prefab/${currentLightboxImage.projectSlug}`);
                     } else {
                       navigate(`/projects/${currentLightboxImage.projectSlug}`);
                     }
@@ -197,6 +200,7 @@ export default function Gallery() {
 }
 
 // Category slug helpers
-const residentialSlugs = ["nirvaana", "maaya", "villa-praana"];
-const hospitalitySlugs = ["the-amber-resort", "verde-restaurant-collective", "oak-boutique-hotel"];
-const commercialSlugs = ["vertex-corporate-tower"];
+const residentialSlugs = ["kabini-house", "levitating-house", "villa-maaya", "villa-nirvaana"];
+const hospitalitySlugs = ["the-amber-resort", "verde-restaurant-collective", "oak-boutique-hotel", "kaze"];
+const commercialSlugs = ["vertex-corporate-tower", "sanctuary-office"];
+const prefabSlugs = ["zen-den"];
