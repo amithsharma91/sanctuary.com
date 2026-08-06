@@ -3,6 +3,7 @@ import NotFound from "../pages/NotFound";
 import Home from "../pages/home/page";
 import ProjectDetail from "../pages/projects/detail/page";
 import VillaMaaya from "../pages/projects/residential/villa-maaya/page";
+import LevitatingHouse from "../pages/projects/residential/levitating-house/page";
 import Gallery from "../pages/gallery/page";
 import Projects from "../pages/projects/page";
 import CompletedProjects from "../pages/projects/completed/page";
@@ -33,6 +34,8 @@ const routes: RouteObject[] = [
   { path: "/projects/residential", element: <ResidentialProjects /> },
   // Dedicated VILLA MAAYA page — must come before the generic :projectSlug route
   { path: "/projects/residential/villa-maaya", element: <VillaMaaya /> },
+  // Dedicated Levitating House page — must come before the generic :projectSlug route
+  { path: "/projects/residential/levitating-house", element: <LevitatingHouse /> },
   { path: "/projects/hospitality", element: <HospitalityProjects /> },
   { path: "/projects/commercial", element: <CommercialProjects /> },
   // Individual project detail pages
