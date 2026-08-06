@@ -102,4 +102,61 @@ export const residentialProjects = [
       { title: "Timeless Narrative", description: "A unique Indian story told through space, light, and material.", icon: "ri-book-open-line" },
     ],
   },
+  {
+    slug: "levitating-house",
+    title: "Levitating House",
+    name: "Levitating House",
+    fullName: "Levitating House",
+    location: "Assagao, North Goa",
+    category: "Residential",
+    year: "2025",
+    description:
+      "A tropical contemporary holiday villa overlooking the lush plantations of Assagao, blending contemporary architecture with Goan tradition.",
+    image:
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012054/COVER_PHOTO_tio1tg.jpg",
+    heroImage:
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012054/COVER_PHOTO_tio1tg.jpg",
+    highlightImages: [
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012067/LEVITATING_HOUSE_-_7_kgazbo.jpg",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012065/LEVITATING_HOUSE_-_13_kc2glm.jpg",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012063/LEVITATING_HOUSE_-_6_esbuur.jpg",
+    ],
+    client: "Private Client",
+    shortDescription:
+      "A tropical contemporary holiday villa overlooking the lush plantations of Assagao, blending contemporary architecture with Goan tradition.",
+    architectStory:
+      "Levitating House is a tropical contemporary style villa located in a residential area along the coastal region of Assagao in North Goa. The site offers expansive views overlooking plantations across a gentle hillside.\n\n" +
+      "The villa derives its name from the seemingly floating upper volume that extends gracefully towards the rear green landscape. Designed as a refined getaway home for relaxation and entertainment, every major living space opens seamlessly into the backyard and swimming pool, creating a strong visual and spatial connection with the surrounding tropical environment.\n\n" +
+      "Two upper-level bedrooms also overlook this lush landscape, strengthening the relationship between architecture and nature. Through the thoughtful use of locally sourced laterite stone, traditional Goan pigmented cement tiles, and polished pigmented concrete flooring crafted by local artisans, the residence celebrates regional craftsmanship while embracing contemporary living.",
+    galleryImages: [
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012067/LEVITATING_HOUSE_-_7_kgazbo.jpg",
+      },
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012065/LEVITATING_HOUSE_-_13_kc2glm.jpg",
+      },
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012063/LEVITATING_HOUSE_-_6_esbuur.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012053/LEVITATING_HOUSE_-_12_w3fu38.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786012053/LEVITATING_HOUSE_-_9_cjozxu.jpg",
+      },
+    ],
+    designHighlights: [
+      { title: "Tropical Contemporary", description: "A refined blend of modern tropical architecture with traditional Goan elements and materials.", icon: "ri-home-smile-line" },
+      { title: "Floating Volume", description: "The upper level extends gracefully towards the rear landscape, creating the illusion of levitation.", icon: "ri-contrast-drop-2-line" },
+      { title: "Seamless Indoor-Outdoor", description: "Every major living space opens into the backyard and swimming pool area.", icon: "ri-shape-line" },
+      { title: "Local Craftsmanship", description: "Locally sourced laterite stone, traditional Goan cement tiles, and artisanal concrete flooring.", icon: "ri-tools-line" },
+      { title: "Plantation Views", description: "Expansive views overlooking the lush plantations across the gentle Goan hillside.", icon: "ri-map-pin-line" },
+      { title: "Architecture & Nature", description: "Upper-level bedrooms frame the landscape, strengthening the bond between built form and nature.", icon: "ri-book-open-line" },
+    ],
+  },
 ];
