@@ -44,62 +44,116 @@ export const hospitalityProjects = [
       "https://readdy.ai/api/search-image?query=Luxury%20hotel%20rooftop%20terrace%20with%20Fort%20Kochi%20view%2C%20contemporary%20bar%20and%20lounge%20seating%2C%20sunset%20sky%2C%20warm%20ambient%20lighting%2C%20sophisticated%20relaxed%20atmosphere%2C%20editorial%20photography%2C%20warm%20tones&width=600&height=800&seq=hosp-oak-3&orientation=portrait",
     ],
   },
+  {
+    slug: "kaze",
+    title: "KAZÉ",
+    name: "KAZÉ",
+    fullName: "KAZÉ",
+    location: "Bangalore CBD",
+    category: "F&B / Hospitality",
+    year: "2025",
+    description:
+      "A contemporary Asian-inspired restobar located on the 21st floor of a landmark building in Bangalore's CBD, combining dramatic skyline views with refined materials and a calming atmosphere.",
+    image:
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014640/COVER_PHOTO_nqhtcx.jpg",
+    heroImage:
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014640/COVER_PHOTO_nqhtcx.jpg",
+    highlightImages: [
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014640/10_hjlxft.jpg",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014642/01_g1lc2q.jpg",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014644/11_b9odp8.jpg",
+    ],
+    client: "Private Client",
+    shortDescription:
+      "A contemporary Asian-inspired restobar on the 21st floor, floating above Bangalore's skyline.",
+    architectStory:
+      "Kazé is a contemporary Asian-inspired restobar located on the 21st floor of a landmark building in Bangalore's CBD.\n\n" +
+      "The design creates a sensation of floating above the city while drawing inspiration from traditional Japanese tea houses, combining dramatic skyline views with refined materials and a calming atmosphere.",
+    galleryImages: [
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014640/10_hjlxft.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014642/01_g1lc2q.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014644/11_b9odp8.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014646/09_ycc2vf.jpg",
+      },
+    ],
+    designHighlights: [
+      { title: "Floating Above the City", description: "A 21st-floor location creating a sensation of floating above the Bangalore skyline.", icon: "ri-building-line" },
+      { title: "Japanese Tea House Inspiration", description: "Drawing from traditional Japanese tea houses for a refined, calming atmosphere.", icon: "ri-home-smile-line" },
+      { title: "Dramatic Skyline Views", description: "Panoramic views of Bangalore's CBD from every vantage point.", icon: "ri-landscape-line" },
+      { title: "Refined Materials", description: "A carefully curated palette of premium materials that elevate the sensory experience.", icon: "ri-shape-line" },
+      { title: "Asian-Inspired Design", description: "Contemporary Asian aesthetics blended with modern hospitality design.", icon: "ri-contrast-drop-2-line" },
+      { title: "Calming Atmosphere", description: "A restobar designed as a serene escape above the urban chaos.", icon: "ri-mental-health-line" },
+    ],
+  },
 ];
 
 export const residentialProjects = [
   {
-    slug: "villa-maaya",
-    title: "VILLA MAAYA",
-    name: "Homes of Sanctuary",
-    fullName: "Homes of Sanctuary — VILLA MAAYA",
-    location: "Bengaluru Rural",
+    slug: "kabini-house",
+    title: "Kabini House",
+    name: "Kabini House",
+    fullName: "Kabini House",
+    location: "Kabini River",
     category: "Residential",
     year: "2025",
     description:
-      "A modest yet soulful holiday home which is earthy, rooted, and unafraid to embrace contradictions. An evocative blend of contemporary and vernacular, woven into a unique Indian narrative.",
+      "A sprawling 25-acre residential community along the banks of the Kabini River consisting of 35 luxury villas with spectacular waterfront views.",
     image:
-      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/73b78ab0-0ec9-49b8-bef6-c542ac7ba590_compressed_cover-photo.webp",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011466/Screenshot_2026-08-06_153655_hzqhew.png",
     heroImage:
-      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/73b78ab0-0ec9-49b8-bef6-c542ac7ba590_compressed_cover-photo.webp",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011466/Screenshot_2026-08-06_153655_hzqhew.png",
     highlightImages: [
-      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/98c557d4-4dd7-470e-8cdf-310d443220d0_compressed_DSC09594-HDR.webp",
-      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/b3d90627-58c6-41db-a06f-15706f9bf44d_compressed_DSC09567.webp",
-      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/a7ef9574-5721-4b8e-a64c-90e56b1aabb8_compressed_DSC09563.webp",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011467/Screenshot_2026-08-06_154327_vsalli.png",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011465/Screenshot_2026-08-06_153954_uwhyek.png",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011464/Screenshot_2026-08-06_154101_r6yz86.png",
     ],
     client: "Private Client",
     shortDescription:
-      "A modest yet soulful holiday home which is earthy, rooted, and unafraid to embrace contradictions.",
+      "A sprawling 25-acre residential community along the Kabini River with 35 luxury villas and spectacular waterfront views.",
     architectStory:
-      "VILLA MAAYA is a modest yet soulful holiday home which is earthy, rooted, and unafraid to embrace contradictions.\n\nIt is an evocative blend of contemporary and vernacular, rural and urban, warm and minimal, indoor and outdoor, machine-made and handmade.\n\nTogether, these dualities are woven into a unique Indian narrative that feels both timeless and resonant.",
+      "A sprawling 25-acre residential community located along the banks of the Kabini River consisting of 35 luxury villas, each enjoying spectacular waterfront views.\n\n" +
+      "Inspired by South-East Asian contemporary architecture, every villa is surrounded by a large landscaped private garden for intimate gatherings.\n\n" +
+      "Common spaces are organised around a linear courtyard extending into a large infinity pool, while the upper-floor terrace deck partially floats above the pool and visually aligns with the waterfront beyond.",
     galleryImages: [
       {
-        category: "Interior",
-        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/98c557d4-4dd7-470e-8cdf-310d443220d0_compressed_DSC09594-HDR.webp",
-      },
-      {
-        category: "Interior",
-        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/b3d90627-58c6-41db-a06f-15706f9bf44d_compressed_DSC09567.webp",
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011467/Screenshot_2026-08-06_154327_vsalli.png",
       },
       {
         category: "Exterior",
-        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/a7ef9574-5721-4b8e-a64c-90e56b1aabb8_compressed_DSC09563.webp",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011465/Screenshot_2026-08-06_153954_uwhyek.png",
       },
       {
         category: "Exterior",
-        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/015888fd-3344-48fe-b401-b9f8b8f90a31_compressed_DSC09536.webp",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011464/Screenshot_2026-08-06_154101_r6yz86.png",
       },
       {
-        category: "Exterior",
-        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/76e6548a-3fe8-4d9f-a3bd-b2912937ed86_compressed_DSC09449-Edit.webp",
+        category: "Site",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011463/Screenshot_2026-08-06_153907_bz2kk9.png",
+      },
+      {
+        category: "Site",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786011384/Screenshot_2026-08-06_154350_jea2oa.png",
       },
     ],
     designHighlights: [
-      { title: "Contemporary & Vernacular", description: "An evocative blend of modern design language with traditional Indian craft and materiality.", icon: "ri-home-smile-line" },
-      { title: "Indoor & Outdoor", description: "Seamless transitions between interior sanctuaries and the surrounding Bengaluru Rural landscape.", icon: "ri-contrast-drop-2-line" },
-      { title: "Warm & Minimal", description: "A restrained palette that feels both sophisticated and deeply welcoming.", icon: "ri-shape-line" },
-      { title: "Machine-made & Handmade", description: "Precision construction meets artisanal craft for a truly bespoke result.", icon: "ri-tools-line" },
-      { title: "Rooted in Place", description: "Architecture that responds to local climate, culture, and the rhythms of rural life.", icon: "ri-map-pin-line" },
-      { title: "Timeless Narrative", description: "A unique Indian story told through space, light, and material.", icon: "ri-book-open-line" },
+      { title: "South-East Asian Contemporary", description: "Architecture inspired by South-East Asian design traditions, reimagined for modern living.", icon: "ri-home-smile-line" },
+      { title: "Waterfront Living", description: "35 luxury villas, each enjoying spectacular views of the Kabini River.", icon: "ri-water-flash-line" },
+      { title: "Private Gardens", description: "Every villa surrounded by a large landscaped private garden for intimate gatherings.", icon: "ri-leaf-line" },
+      { title: "Linear Courtyard", description: "Common spaces organised around a linear courtyard extending into a large infinity pool.", icon: "ri-contrast-drop-2-line" },
+      { title: "Floating Terrace", description: "Upper-floor terrace deck partially floats above the pool, aligning with the waterfront beyond.", icon: "ri-landscape-line" },
+      { title: "25-Acre Community", description: "A spacious residential community masterfully integrated with the river landscape.", icon: "ri-map-pin-line" },
     ],
   },
   {
@@ -157,6 +211,149 @@ export const residentialProjects = [
       { title: "Local Craftsmanship", description: "Locally sourced laterite stone, traditional Goan cement tiles, and artisanal concrete flooring.", icon: "ri-tools-line" },
       { title: "Plantation Views", description: "Expansive views overlooking the lush plantations across the gentle Goan hillside.", icon: "ri-map-pin-line" },
       { title: "Architecture & Nature", description: "Upper-level bedrooms frame the landscape, strengthening the bond between built form and nature.", icon: "ri-book-open-line" },
+    ],
+  },
+  {
+    slug: "villa-maaya",
+    title: "VILLA MAAYA",
+    name: "Homes of Sanctuary",
+    fullName: "Homes of Sanctuary — VILLA MAAYA",
+    location: "Bengaluru Rural",
+    category: "Residential",
+    year: "2025",
+    description:
+      "A modest yet soulful holiday home which is earthy, rooted, and unafraid to embrace contradictions. An evocative blend of contemporary and vernacular, woven into a unique Indian narrative.",
+    image:
+      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/73b78ab0-0ec9-49b8-bef6-c542ac7ba590_compressed_cover-photo.webp",
+    heroImage:
+      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/73b78ab0-0ec9-49b8-bef6-c542ac7ba590_compressed_cover-photo.webp",
+    highlightImages: [
+      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/98c557d4-4dd7-470e-8cdf-310d443220d0_compressed_DSC09594-HDR.webp",
+      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/b3d90627-58c6-41db-a06f-15706f9bf44d_compressed_DSC09567.webp",
+      "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/a7ef9574-5721-4b8e-a64c-90e56b1aabb8_compressed_DSC09563.webp",
+    ],
+    client: "Private Client",
+    shortDescription:
+      "A modest yet soulful holiday home which is earthy, rooted, and unafraid to embrace contradictions.",
+    architectStory:
+      "VILLA MAAYA is a modest yet soulful holiday home which is earthy, rooted, and unafraid to embrace contradictions.\n\nIt is an evocative blend of contemporary and vernacular, rural and urban, warm and minimal, indoor and outdoor, machine-made and handmade.\n\nTogether, these dualities are woven into a unique Indian narrative that feels both timeless and resonant.",
+    galleryImages: [
+      {
+        category: "Interior",
+        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/98c557d4-4dd7-470e-8cdf-310d443220d0_compressed_DSC09594-HDR.webp",
+      },
+      {
+        category: "Interior",
+        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/b3d90627-58c6-41db-a06f-15706f9bf44d_compressed_DSC09567.webp",
+      },
+      {
+        category: "Exterior",
+        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/a7ef9574-5721-4b8e-a64c-90e56b1aabb8_compressed_DSC09563.webp",
+      },
+      {
+        category: "Exterior",
+        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/015888fd-3344-48fe-b401-b9f8b8f90a31_compressed_DSC09536.webp",
+      },
+      {
+        category: "Exterior",
+        src: "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/76e6548a-3fe8-4d9f-a3bd-b2912937ed86_compressed_DSC09449-Edit.webp",
+      },
+    ],
+    designHighlights: [
+      { title: "Contemporary & Vernacular", description: "An evocative blend of modern design language with traditional Indian craft and materiality.", icon: "ri-home-smile-line" },
+      { title: "Indoor & Outdoor", description: "Seamless transitions between interior sanctuaries and the surrounding Bengaluru Rural landscape.", icon: "ri-contrast-drop-2-line" },
+      { title: "Warm & Minimal", description: "A restrained palette that feels both sophisticated and deeply welcoming.", icon: "ri-shape-line" },
+      { title: "Machine-made & Handmade", description: "Precision construction meets artisanal craft for a truly bespoke result.", icon: "ri-tools-line" },
+      { title: "Rooted in Place", description: "Architecture that responds to local climate, culture, and the rhythms of rural life.", icon: "ri-map-pin-line" },
+      { title: "Timeless Narrative", description: "A unique Indian story told through space, light, and material.", icon: "ri-book-open-line" },
+    ],
+  },
+  {
+    slug: "villa-nirvaana",
+    title: "Villa Nirvaana",
+    name: "Villa Nirvaana",
+    fullName: "Villa Nirvaana",
+    location: "Goa",
+    category: "Residential",
+    year: "2025",
+    description:
+      "A serene retreat where architecture and landscape merge into one continuous experience — organically shaped infinity pool, shaded outdoor deck, and uninterrupted agricultural views.",
+    image:
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013332/COVER_PHOTO_e7e0ze.jpg",
+    heroImage:
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013332/COVER_PHOTO_e7e0ze.jpg",
+    highlightImages: [
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013289/DSC00406-HDR_ifi3nm.jpg",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013289/DSC00304_oisnxa.jpg",
+      "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013289/DSC00089_ghwwmi.jpg",
+    ],
+    client: "Private Client",
+    shortDescription:
+      "A serene retreat where architecture and landscape merge into one continuous experience.",
+    architectStory:
+      "Villa Nirvaana is a serene retreat where architecture and landscape merge into one continuous experience.\n\n" +
+      "Its organically shaped infinity pool, shaded outdoor deck, and uninterrupted agricultural views create a timeless atmosphere of calmness, reflection, and connection with nature.",
+    galleryImages: [
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013289/DSC00406-HDR_ifi3nm.jpg",
+      },
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013289/DSC00304_oisnxa.jpg",
+      },
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013289/DSC00089_ghwwmi.jpg",
+      },
+      {
+        category: "Pool",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013291/DSC00222-HDR_vuy10t.jpg",
+      },
+      {
+        category: "Pool",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013291/DSC00146-HDR_wgsdp4.jpg",
+      },
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013310/DSC00004_zx6j0z.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013310/DSC00352_yudj2d.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013311/DSC00236-HDR_gtwxtq.jpg",
+      },
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013317/DSC00396-HDR-Edit_gdksyq.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013326/DSC00209_x84iqu.jpg",
+      },
+      {
+        category: "Exterior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013332/DSC00161_fcwx4x.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013333/DSC00071_win97j.jpg",
+      },
+      {
+        category: "Interior",
+        src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786013333/DSC00317_fcbqbm.jpg",
+      },
+    ],
+    designHighlights: [
+      { title: "Architecture & Landscape", description: "A serene retreat where built form and nature merge into one continuous experience.", icon: "ri-home-smile-line" },
+      { title: "Organic Infinity Pool", description: "An organically shaped infinity pool that feels carved from the landscape itself.", icon: "ri-water-flash-line" },
+      { title: "Shaded Outdoor Deck", description: "A generous outdoor deck offering shaded comfort with panoramic views.", icon: "ri-contrast-drop-2-line" },
+      { title: "Agricultural Views", description: "Uninterrupted views of the surrounding agricultural landscape from every space.", icon: "ri-landscape-line" },
+      { title: "Timeless Calmness", description: "A design philosophy rooted in reflection, calmness, and connection with nature.", icon: "ri-mental-health-line" },
+      { title: "Bespoke Craft", description: "Every detail crafted to create a home of enduring beauty and serenity.", icon: "ri-tools-line" },
     ],
   },
 ];
