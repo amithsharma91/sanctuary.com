@@ -8,10 +8,13 @@ import PageMeta from "@/components/feature/PageMeta";
 import { residentialProjects, hospitalityProjects } from "@/mocks/projectCollections";
 import { commercialProjects } from "@/mocks/commercialProjects";
 
+const prefabProjects: any[] = [];
+
 const categories = [
   { label: "Residential", href: "/projects/residential", projects: residentialProjects, image: "https://readdy.ai/api/search-image?query=Luxury%20private%20villa%20exterior%20at%20golden%20hour%2C%20warm%20stone%20and%20wood%20facade%2C%20floor%20to%20ceiling%20glass%2C%20infinity%20pool%2C%20lush%20tropical%20garden%2C%20contemporary%20architecture%2C%20serene%20peaceful%20atmosphere%2C%20editorial%20architectural%20photography%2C%20warm%20amber%20and%20earth%20tones&width=900&height=600&seq=cat-residential&orientation=landscape" },
   { label: "Hospitality", href: "/projects/hospitality", projects: hospitalityProjects, image: "https://readdy.ai/api/search-image?query=Luxury%20resort%20lobby%20interior%20with%20dramatic%20double%20height%20space%2C%20warm%20stone%20and%20wood%20materials%2C%20contemporary%20design%20with%20traditional%20accents%2C%20soft%20ambient%20lighting%2C%20sophisticated%20hospitality%20atmosphere%2C%20editorial%20architectural%20photography%2C%20warm%20amber%20tones&width=900&height=600&seq=cat-hospitality&orientation=landscape" },
   { label: "Commercial", href: "/projects/commercial", projects: commercialProjects, image: "https://readdy.ai/api/search-image?query=Modern%20glass%20office%20tower%20with%20vertical%20gardens%2C%20warm%20golden%20hour%20light%2C%20contemporary%20commercial%20architecture%2C%20biophilic%20design%2C%20urban%20skyline%2C%20sophisticated%20corporate%20atmosphere%2C%20editorial%20architectural%20photography%2C%20warm%20earth%20tones&width=900&height=600&seq=cat-commercial&orientation=landscape" },
+  { label: "Prefab Projects", href: "/projects/prefab", projects: prefabProjects, image: "https://readdy.ai/api/search-image?query=Modern%20prefabricated%20modular%20tiny%20home%20with%20warm%20wood%20facade%2C%20large%20glass%20doors%20opening%20to%20nature%2C%20compact%20minimalist%20design%2C%20contemporary%20portable%20architecture%2C%20surrounded%20by%20trees%20and%20greenery%2C%20soft%20natural%20light%2C%20sustainable%20design%2C%20editorial%20architectural%20photography%2C%20warm%20earth%20tones&width=900&height=600&seq=cat-prefab&orientation=landscape" },
 ];
 
 export default function CompletedProjects() {
@@ -55,7 +58,7 @@ export default function CompletedProjects() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {categories.map((cat, index) => (
                 <button
                   key={cat.label}
