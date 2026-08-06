@@ -5,6 +5,27 @@ import { sanctuaryProjects } from "./sanctuaryProjects";
 import { commercialProjects } from "./commercialProjects";
 import { residentialProjects, hospitalityProjects } from "./projectCollections";
 
+const prefabProjects = [
+  {
+    slug: "zen-den",
+    title: "Zen Den",
+    name: "Zen Den",
+    fullName: "Zen Den",
+    location: "Portable",
+    category: "Prefab",
+    image: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007107/COVER_PHOTO_wdqkux.jpg",
+    galleryImages: [
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007105/WhatsApp_Image_2025-06-06_at_17.00.49_yqindx.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007105/WhatsApp_Image_2025-06-06_at_17.00.48_2_hzpurq.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007106/WhatsApp_Image_2025-06-06_at_17.00.48_1_to7jxd.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007105/WhatsApp_Image_2025-06-06_at_17.18.00_z9gezq.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007106/WhatsApp_Image_2025-06-06_at_17.00.48_uxhujy.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007107/WhatsApp_Image_2025-06-06_at_17.00.49_1_tspnmv.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786007108/WhatsApp_Image_2025-06-06_at_17.00.49_3_tpqool.jpg" },
+    ],
+  },
+];
+
 export interface GalleryImage {
   id: string;
   src: string;
@@ -24,6 +45,7 @@ function buildGalleryFromProjects(): GalleryImage[] {
     ...commercialProjects,
     ...residentialProjects,
     ...hospitalityProjects,
+    ...prefabProjects,
   ];
 
   // Add galleryImages from projects that have them
