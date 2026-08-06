@@ -18,6 +18,7 @@ const mainNavItems = [
           { label: "Residential", href: "/projects/residential" },
           { label: "Hospitality", href: "/projects/hospitality" },
           { label: "Commercial", href: "/projects/commercial" },
+          { label: "Prefab Projects", href: "/projects/prefab" },
         ],
       },
       { label: "Ongoing Projects", href: "/projects/ongoing" },
@@ -118,7 +119,8 @@ export default function Navbar() {
       return location.pathname === "/projects/completed" || 
         location.pathname.startsWith("/projects/residential") ||
         location.pathname.startsWith("/projects/hospitality") ||
-        location.pathname.startsWith("/projects/commercial");
+        location.pathname.startsWith("/projects/commercial") ||
+        location.pathname.startsWith("/projects/prefab");
     }
     return location.pathname.startsWith(href);
   };
@@ -513,6 +515,11 @@ export default function Navbar() {
                         label="Commercial"
                         isActive={isNestedActive("/projects/commercial")}
                         onClick={() => navigateTo("/projects/commercial")}
+                      />
+                      <MobileNavSubItem
+                        label="Prefab Projects"
+                        isActive={isNestedActive("/projects/prefab")}
+                        onClick={() => navigateTo("/projects/prefab")}
                       />
                     </div>
                   </div>
