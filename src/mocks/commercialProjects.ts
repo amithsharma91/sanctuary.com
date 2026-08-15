@@ -1,0 +1,33 @@
+export const commercialProjects = [
+  {
+    slug: "sanctuary-office",
+    title: "Sanctuary Office",
+    name: "Sanctuary Office",
+    fullName: "Sanctuary Office",
+    location: "Bangalore",
+    category: "Commercial",
+    year: "2025",
+    shortDescription: "A lightweight temporary office structure atop an existing building, surrounded by trees — designed as a calm, inspiring workplace with a central courtyard.",
+    architectStory: "The office space is located atop an existing structure in a residential neighbourhood and is surrounded by large trees. The design captures the context by introducing an architectural intervention which sits lightly on the podium and uses the green umbrella around. The office is strategised as a lightweight, temporary structure which can be dismantled and assembled while preserving most of its structural integrity without damaging the existing building. A central courtyard together with the double-height vaulted ceiling provides abundant natural light and cross ventilation, creating a calm and inspiring workplace.",
+    image: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006616/COVER_PHOTO_ioojgq.jpg",
+    heroImage: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006616/COVER_PHOTO_ioojgq.jpg",
+    designHighlights: [
+      { title: "Lightweight Intervention", description: "A temporary structure that sits lightly on the existing building without damaging it.", icon: "ri-stack-line" },
+      { title: "Tree Canopy", description: "Surrounded by large trees, the design uses the natural green umbrella as an integral element.", icon: "ri-leaf-line" },
+      { title: "Central Courtyard", description: "A central courtyard providing abundant natural light and cross ventilation.", icon: "ri-sun-line" },
+      { title: "Double-Height Vaulted Ceiling", description: "A dramatic vaulted ceiling creating a sense of openness and inspiration.", icon: "ri-building-line" },
+      { title: "Dismantlable", description: "Designed to be dismantled and reassembled while preserving structural integrity.", icon: "ri-tools-line" },
+      { title: "Calm Workplace", description: "An inspiring office environment that fosters creativity and wellbeing.", icon: "ri-mental-health-line" },
+    ],
+    galleryImages: [
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006622/IMG_2389_vmj139.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006618/IMG_2644_mpvylw.jpg" },
+      { category: "Interior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006618/IMG_2444_sswoky.jpg" },
+      { category: "Interior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006618/IMG_2529_avg9mb.jpg" },
+      { category: "Interior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006615/IMG_2658_fqw2w6.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006614/IMG_2504_zndp9a.jpg" },
+      { category: "Interior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006612/IMG_2515_kj58ib.jpg" },
+      { category: "Exterior", src: "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006616/COVER_PHOTO_ioojgq.jpg" },
+    ],
+  },
+];
