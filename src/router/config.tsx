@@ -152,7 +152,7 @@ const routes: RouteObject[] = [
   { path: "/clients", element: <Clients /> },
   { path: "/contact", element: <ContactPage /> },
   { path: "/blog", element: <Blog /> },
-  { path: "/blog/:slug*", element: <BlogArticle /> },
+  { path: "/blog/:slug/*", element: <BlogArticle /> },
   { path: "/thank-you", element: <ThankYou /> },
   { path: "/privacy-policy", element: <PrivacyPolicy /> },
   { path: "/terms", element: <TermsAndConditions /> },

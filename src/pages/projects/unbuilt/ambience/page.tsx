@@ -45,7 +45,7 @@ export default function Ambience() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Ambience Park Unbuilt Project | Sanctuary Architects & Designers"
+        title="Ambience Park | Unbuilt Project | Sanctuary Architects & Designers"
         description="Explore Ambience Park, an unbuilt community clubhouse by Sanctuary Architects & Designers blending Japandi and Warm Minimalist aesthetics across wellness, recreation, and dining zones."
         keywords="Ambience Park, unbuilt community clubhouse, Japandi architecture, Warm Minimalist design, Sanctuary Architects"
         ogImage={COVER_IMAGE}
