@@ -91,6 +91,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.sanctuaryarch.com/blog/architecture-design-process</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.sanctuaryarch.com/blog/architecture-consultation-guide</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.sanctuaryarch.com/blog/sustainable-architecture</loc>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.sanctuaryarch.com/privacy-policy</loc>
     <lastmod>2026-08-14</lastmod>
     <changefreq>yearly</changefreq>

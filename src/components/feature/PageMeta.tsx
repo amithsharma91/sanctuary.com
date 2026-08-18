@@ -6,6 +6,7 @@ import {
   DEFAULT_OG_IMAGE,
   absoluteUrl,
 } from "@/utils/seo";
+import { setServerHead } from "./serverHead";
 
 interface PageMetaProps {
   title?: string;
@@ -15,6 +16,7 @@ interface PageMetaProps {
   ogType?: "website" | "article";
   schema?: Record<string, unknown> | Record<string, unknown>[];
   canonicalPath?: string;
+  robots?: string;
 }
 
 // Capture the static head defaults shipped in index.html so they can be
@@ -49,6 +51,16 @@ function upsertCanonical(href: string) {
   el.setAttribute("href", href);
 }
 
+function removeMeta(attr: "name" | "property", key: string) {
+  const el = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (el) el.remove();
+}
+
+function removeCanonical() {
+  const el = document.head.querySelector('link[rel="canonical"]');
+  if (el) el.remove();
+}
+
 function applyHead({
   title,
   description,
@@ -56,13 +68,15 @@ function applyHead({
   ogImage,
   ogType,
   canonical,
+  robots,
 }: {
   title: string;
   description: string;
   keywords?: string;
   ogImage?: string;
   ogType: "website" | "article";
-  canonical: string;
+  canonical?: string;
+  robots?: string;
 }) {
   const image = ogImage || DEFAULT_OG_IMAGE;
 
@@ -70,14 +84,21 @@ function applyHead({
 
   upsertMeta("name", "description", description);
   if (keywords) upsertMeta("name", "keywords", keywords);
-  upsertMeta("name", "robots", "index, follow");
+  else removeMeta("name", "keywords");
+  if (robots) upsertMeta("name", "robots", robots);
+  else upsertMeta("name", "robots", "index, follow");
 
-  upsertCanonical(canonical);
+  if (canonical) {
+    upsertCanonical(canonical);
+    upsertMeta("property", "og:url", canonical);
+  } else {
+    removeCanonical();
+    removeMeta("property", "og:url");
+  }
 
   upsertMeta("property", "og:title", title);
   upsertMeta("property", "og:description", description);
   upsertMeta("property", "og:type", ogType);
-  upsertMeta("property", "og:url", canonical);
   upsertMeta("property", "og:image", image);
   upsertMeta("property", "og:site_name", SITE_NAME);
   upsertMeta("property", "og:locale", SITE_LOCALE);
@@ -101,12 +122,28 @@ export default function PageMeta({
   ogType = "website",
   schema,
   canonicalPath,
+  robots,
 }: PageMetaProps) {
+  // On the server (static prerender) there is no document, so record the
+  // resolved head values for scripts/prerender.mjs to inject into the HTML.
+  if (typeof document === "undefined") {
+    setServerHead({
+      title: title || DEFAULT_TITLE,
+      description: description || DEFAULT_DESCRIPTION,
+      keywords,
+      ogImage,
+      ogType,
+      canonical: canonicalPath ? absoluteUrl(canonicalPath) : undefined,
+      robots: robots ?? (canonicalPath ? undefined : "noindex, follow"),
+    });
+  }
+
   useEffect(() => {
     try {
       const pageTitle = title || DEFAULT_TITLE;
       const pageDescription = description || DEFAULT_DESCRIPTION;
-      const canonical = canonicalPath ? absoluteUrl(canonicalPath) : DEFAULT_CANONICAL;
+      // Only compute canonical when canonicalPath is actually provided
+      const canonical = canonicalPath ? absoluteUrl(canonicalPath) : undefined;
 
       applyHead({
         title: pageTitle,
@@ -115,6 +152,7 @@ export default function PageMeta({
         ogImage,
         ogType,
         canonical,
+        robots: robots ?? (canonicalPath ? undefined : "noindex, follow"),
       });
 
       return () => {
@@ -124,6 +162,7 @@ export default function PageMeta({
             description: DEFAULT_DESCRIPTION,
             ogType: "website",
             canonical: DEFAULT_CANONICAL,
+            robots: "index, follow",
           });
         } catch {
           // Silently ignore cleanup errors
@@ -132,7 +171,7 @@ export default function PageMeta({
     } catch {
       // Silently ignore head-manipulation errors so they never block rendering
     }
-  }, [title, description, keywords, ogImage, ogType, canonicalPath]);
+  }, [title, description, keywords, ogImage, ogType, canonicalPath, robots]);
 
   if (!schema) return null;
 

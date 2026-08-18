@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { allGalleryImages, type GalleryImage } from "@/mocks/gallerySync";
 
 /**
@@ -53,7 +53,6 @@ export default function GalleryPreview() {
   const [isVisible, setIsVisible] = useState(false);
   const [previewImages, setPreviewImages] = useState<GalleryImage[]>([]);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   // Randomized fresh on every page load — landscape-only, probed for orientation
   useEffect(() => {
@@ -134,13 +133,13 @@ export default function GalleryPreview() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <button
-            onClick={() => navigate("/gallery")}
+          <Link
+            to="/gallery"
             className="btn-luxury group inline-flex items-center gap-2 px-8 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap"
           >
             View All Gallery
             <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

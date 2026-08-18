@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./router";
 import { I18nextProvider } from "react-i18next";
@@ -17,7 +18,9 @@ function App() {
           <ScrollProgress />
           <FloatingActions />
           <SiteSchema />
-          <AppRoutes />
+          <Suspense fallback={null}>
+            <AppRoutes />
+          </Suspense>
         </ErrorBoundary>
       </BrowserRouter>
     </I18nextProvider>

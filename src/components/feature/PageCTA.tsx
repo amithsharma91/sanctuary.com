@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface PageCTAProps {
   title?: string;
@@ -20,7 +20,7 @@ export default function PageCTA({
 }: PageCTAProps) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,6 +39,7 @@ export default function PageCTA({
         <img
           src="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014640/COVER_PHOTO_nqhtcx.jpg"
           alt=""
+          loading="lazy"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/70" />
@@ -65,18 +66,18 @@ export default function PageCTA({
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <button
-              onClick={() => navigate(primaryHref)}
+            <Link
+              to={primaryHref}
               className="btn-luxury w-full sm:w-auto px-9 py-3.5 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 hover:shadow-[0_6px_24px_rgba(166,124,82,0.2)] active:scale-[0.97] whitespace-nowrap"
             >
               {primaryLabel}
-            </button>
-            <button
-              onClick={() => navigate(secondaryHref)}
+            </Link>
+            <Link
+              to={secondaryHref}
               className="w-full sm:w-auto px-9 py-3.5 border border-background-200/30 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-background-50/10 hover:border-background-50/50 transition-all duration-400 active:scale-[0.97] whitespace-nowrap"
             >
               {secondaryLabel}
-            </button>
+            </Link>
           </div>
         </div>
       </div>

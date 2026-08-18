@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   const [revealed, setRevealed] = useState(false);
@@ -7,7 +7,6 @@ export default function Hero() {
   const parallaxRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef<number | null>(null);
-  const navigate = useNavigate();
 
   const isTouchDevice =
     typeof window !== "undefined" && "ontouchstart" in window;
@@ -82,6 +81,8 @@ export default function Hero() {
             <img
               src="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786793653/cover_photo_2_qiygcd_gawujq.jpg"
               alt="Sanctuary Architects & Designers — Luxury Architecture"
+              loading="eager"
+              fetchPriority="high"
               className="w-full h-full object-cover object-center md:object-top"
             />
           </div>
@@ -130,12 +131,12 @@ export default function Hero() {
             >
               Explore Projects
             </button>
-            <button
-              onClick={() => navigate("/contact")}
-              className="w-full sm:w-auto px-8 py-3.5 border border-background-200/40 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-background-50/10 hover:border-background-50/60 transition-all duration-400 active:scale-[0.97] whitespace-nowrap"
+            <Link
+              to="/contact"
+              className="w-full sm:w-auto px-8 py-3.5 border border-background-200/40 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-background-50/10 hover:border-background-50/60 transition-all duration-400 active:scale-[0.97] whitespace-nowrap text-center inline-block"
             >
               Book Consultation
-            </button>
+            </Link>
           </div>
         </div>
       </div>

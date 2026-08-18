@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 
 const mainNavItems = [
@@ -49,7 +49,6 @@ export default function Navbar() {
   const moreRef = useRef<HTMLDivElement>(null);
   const nestedRef = useRef<HTMLDivElement>(null);
   const nestedTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const navigate = useNavigate();
   const location = useLocation();
 
   const isHome = location.pathname === "/";
@@ -107,7 +106,8 @@ export default function Navbar() {
     }
   }, [isMobileMenuOpen]);
 
-  const navigateTo = (href: string) => {
+  // Close all menus on route change
+  useEffect(() => {
     setIsMobileMenuOpen(false);
     setMobileProjectsOpen(false);
     setMobileCompletedOpen(false);
@@ -115,8 +115,7 @@ export default function Navbar() {
     setProjectsOpen(false);
     setCompletedNestedOpen(false);
     setMoreOpen(false);
-    navigate(href);
-  };
+  }, [location.pathname]);
 
   const isActive = (href: string) => {
     if (href === "/") return location.pathname === "/";
@@ -158,20 +157,17 @@ export default function Navbar() {
         <div className="w-full px-5 md:px-8 lg:px-14">
           <div className="flex items-center justify-between h-16 md:h-[72px] lg:h-20">
             {/* Logo */}
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
+            <Link
+              to="/"
+              onClick={() => {
                 if (isHome) {
                   window.scrollTo({ top: 0, behavior: "smooth" });
-                } else {
-                  navigate("/");
                 }
               }}
               className="group flex items-center shrink-0 transition-all duration-500 ease-out hover:scale-[1.03]"
             >
               <Logo className="h-9 md:h-10 lg:h-11 w-auto" alt="Sanctuary Architects & Designers" />
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
@@ -219,9 +215,9 @@ export default function Navbar() {
                                 onMouseLeave={handleNestedLeave}
                                 ref={nestedRef}
                               >
-                                <button
-                                  onClick={() => navigateTo(child.href)}
-                                  className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 flex items-center justify-between ${
+                                <Link
+                                  to={child.href}
+                                  className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 flex items-center justify-between block ${
                                     isActive(child.href)
                                       ? "text-primary-500 bg-primary-50/20"
                                       : "text-foreground-700 hover:text-primary-500 hover:bg-secondary-100/40"
@@ -229,7 +225,7 @@ export default function Navbar() {
                                 >
                                   <span>{child.label}</span>
                                   <i className="ri-arrow-right-s-line text-xs text-secondary-400" />
-                                </button>
+                                </Link>
 
                                 {/* Nested Submenu */}
                                 <div
@@ -242,17 +238,17 @@ export default function Navbar() {
                                   onMouseLeave={handleNestedLeave}
                                 >
                                   {child.nestedChildren!.map((nested) => (
-                                    <button
+                                    <Link
                                       key={nested.label}
-                                      onClick={() => navigateTo(nested.href)}
-                                      className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 ${
+                                      to={nested.href}
+                                      className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 block ${
                                         isNestedActive(nested.href)
                                           ? "text-primary-500 bg-primary-50/20"
                                           : "text-foreground-700 hover:text-primary-500 hover:bg-secondary-100/40"
                                       }`}
                                     >
                                       {nested.label}
-                                    </button>
+                                    </Link>
                                   ))}
                                 </div>
                               </div>
@@ -260,17 +256,17 @@ export default function Navbar() {
                           }
 
                           return (
-                            <button
+                            <Link
                               key={child.label}
-                              onClick={() => navigateTo(child.href)}
-                              className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 ${
+                              to={child.href}
+                              className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 block ${
                                 isActive(child.href)
                                   ? "text-primary-500 bg-primary-50/20"
                                   : "text-foreground-700 hover:text-primary-500 hover:bg-secondary-100/40"
                               }`}
                             >
                               {child.label}
-                            </button>
+                            </Link>
                           );
                         })}
                       </div>
@@ -279,9 +275,9 @@ export default function Navbar() {
                 }
 
                 return (
-                  <button
+                  <Link
                     key={item.label}
-                    onClick={() => navigateTo(item.href)}
+                    to={item.href}
                     className={`group relative px-3 py-2 text-[13px] font-body tracking-[0.03em] rounded-md transition-all duration-400 ${
                       isActive(item.href)
                         ? "text-primary-500"
@@ -294,7 +290,7 @@ export default function Navbar() {
                     {isActive(item.href) && (
                       <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-[2px] bg-primary-500 rounded-full" />
                     )}
-                  </button>
+                  </Link>
                 );
               })}
 
@@ -330,17 +326,17 @@ export default function Navbar() {
                   }`}
                 >
                   {moreMenuItems.map((item) => (
-                    <button
+                    <Link
                       key={item.label}
-                      onClick={() => navigateTo(item.href)}
-                      className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 ${
+                      to={item.href}
+                      className={`w-full text-left px-5 py-3 text-[13px] font-body transition-colors duration-300 block ${
                         isActive(item.href)
                           ? "text-primary-500 bg-primary-50/20"
                           : "text-foreground-700 hover:text-primary-500 hover:bg-secondary-100/40"
                       }`}
                     >
                       {item.label}
-                    </button>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -348,12 +344,12 @@ export default function Navbar() {
 
             {/* CTA Button */}
             <div className="hidden lg:block ml-4">
-              <button
-                onClick={() => navigateTo("/contact")}
+              <Link
+                to="/contact"
                 className="btn-luxury relative overflow-hidden px-6 py-2.5 bg-primary-500 text-background-50 text-[13px] font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] hover:shadow-[0_6px_20px_rgba(166,124,82,0.16)] active:scale-[0.97] whitespace-nowrap"
               >
                 Book Consultation
-              </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -412,20 +408,16 @@ export default function Navbar() {
         >
           {/* Mobile menu header */}
           <div className="flex items-center justify-between h-16 px-5 border-b border-secondary-200/30">
-            <a
-              href="/"
-              onClick={(e) => {
-                e.preventDefault();
+            <Link
+              to="/"
+              onClick={() => {
                 if (isHome) {
                   window.scrollTo({ top: 0, behavior: "smooth" });
-                } else {
-                  navigate("/");
                 }
-                setIsMobileMenuOpen(false);
               }}
             >
               <Logo className="h-9 w-auto" alt="Sanctuary Architects & Designers" />
-            </a>
+            </Link>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-10 h-10 flex items-center justify-center rounded-md text-foreground-800 hover:bg-secondary-100/30 transition-colors duration-300"
@@ -442,7 +434,6 @@ export default function Navbar() {
               label="Home"
               href="/"
               isActive={isActive("/")}
-              onClick={() => navigateTo("/")}
             />
 
             {/* Gallery */}
@@ -450,7 +441,6 @@ export default function Navbar() {
               label="Gallery"
               href="/gallery"
               isActive={isActive("/gallery")}
-              onClick={() => navigateTo("/gallery")}
             />
 
             {/* Projects — Accordion */}
@@ -508,23 +498,23 @@ export default function Navbar() {
                     <div className="pl-5 space-y-0.5">
                       <MobileNavSubItem
                         label="Residential"
+                        href="/projects/residential"
                         isActive={isNestedActive("/projects/residential")}
-                        onClick={() => navigateTo("/projects/residential")}
                       />
                       <MobileNavSubItem
                         label="Hospitality"
+                        href="/projects/hospitality"
                         isActive={isNestedActive("/projects/hospitality")}
-                        onClick={() => navigateTo("/projects/hospitality")}
                       />
                       <MobileNavSubItem
                         label="Commercial"
+                        href="/projects/commercial"
                         isActive={isNestedActive("/projects/commercial")}
-                        onClick={() => navigateTo("/projects/commercial")}
                       />
                       <MobileNavSubItem
                         label="Prefab Projects"
+                        href="/projects/prefab"
                         isActive={isNestedActive("/projects/prefab")}
-                        onClick={() => navigateTo("/projects/prefab")}
                       />
                     </div>
                   </div>
@@ -532,15 +522,15 @@ export default function Navbar() {
                   {/* Ongoing */}
                   <MobileNavSubItem
                     label="Ongoing Projects"
+                    href="/projects/ongoing"
                     isActive={isActive("/projects/ongoing")}
-                    onClick={() => navigateTo("/projects/ongoing")}
                   />
 
                   {/* Unbuilt */}
                   <MobileNavSubItem
                     label="Unbuilt Projects"
+                    href="/projects/unbuilt"
                     isActive={isActive("/projects/unbuilt")}
-                    onClick={() => navigateTo("/projects/unbuilt")}
                   />
                 </div>
               </div>
@@ -551,7 +541,6 @@ export default function Navbar() {
               label="About"
               href="/about"
               isActive={isActive("/about")}
-              onClick={() => navigateTo("/about")}
             />
 
             {/* Contact */}
@@ -559,7 +548,6 @@ export default function Navbar() {
               label="Contact"
               href="/contact"
               isActive={isActive("/contact")}
-              onClick={() => navigateTo("/contact")}
             />
 
             {/* More */}
@@ -589,8 +577,8 @@ export default function Navbar() {
                     <MobileNavSubItem
                       key={item.label}
                       label={item.label}
+                      href={item.href}
                       isActive={isActive(item.href)}
-                      onClick={() => navigateTo(item.href)}
                     />
                   ))}
                 </div>
@@ -600,12 +588,12 @@ export default function Navbar() {
 
           {/* Mobile CTA */}
           <div className="px-5 pb-8 pt-2">
-            <button
-              onClick={() => navigateTo("/contact")}
-              className="btn-luxury w-full py-4 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 whitespace-nowrap"
+            <Link
+              to="/contact"
+              className="btn-luxury w-full py-4 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 whitespace-nowrap block text-center"
             >
               Book Consultation
-            </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -613,10 +601,10 @@ export default function Navbar() {
   );
 }
 
-function MobileNavItem({ label, isActive: active, onClick }: { label: string; href: string; isActive: boolean; onClick: () => void }) {
+function MobileNavItem({ label, href, isActive: active }: { label: string; href: string; isActive: boolean }) {
   return (
-    <button
-      onClick={onClick}
+    <Link
+      to={href}
       className={`group flex items-center w-full py-3 px-3 rounded-lg transition-all duration-300 ${
         active
           ? "text-primary-500 bg-primary-50/30"
@@ -627,14 +615,14 @@ function MobileNavItem({ label, isActive: active, onClick }: { label: string; hr
       {active && (
         <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary-500" />
       )}
-    </button>
+    </Link>
   );
 }
 
-function MobileNavSubItem({ label, isActive: active, onClick }: { label: string; isActive: boolean; onClick: () => void }) {
+function MobileNavSubItem({ label, href, isActive: active }: { label: string; href: string; isActive: boolean }) {
   return (
-    <button
-      onClick={onClick}
+    <Link
+      to={href}
       className={`group flex items-center w-full py-2.5 px-3 rounded-lg transition-all duration-300 ${
         active
           ? "text-primary-500 bg-primary-50/20"
@@ -645,6 +633,6 @@ function MobileNavSubItem({ label, isActive: active, onClick }: { label: string;
       {active && (
         <span className="ml-auto w-1.5 h-1.5 rounded-full bg-primary-500" />
       )}
-    </button>
+    </Link>
   );
 }

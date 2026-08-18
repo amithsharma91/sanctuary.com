@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -12,8 +11,6 @@ import { unbuiltProjects } from "@/mocks/unbuiltProjects";
 export default function UnbuiltProjects() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
@@ -26,8 +23,8 @@ export default function UnbuiltProjects() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Unbuilt Architecture Projects | Sanctuary Architects"
-        description="Explore unbuilt architecture projects by Sanctuary Architects & Designers — visionary, conceptual designs pushing the boundaries of materiality, form and spatial experience."
+        title="Unbuilt Architecture Projects | Sanctuary"
+        description="Unbuilt and conceptual architecture projects by Sanctuary — visionary designs exploring materiality, form and spatial experience."
         keywords="unbuilt architecture projects, conceptual design, visionary architecture, Sanctuary Architects unbuilt, architectural concepts"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786104452/Screenshot_2026-08-07_173401_uald8x.png"
         canonicalPath="/projects/unbuilt"
@@ -65,7 +62,7 @@ export default function UnbuiltProjects() {
                   title={project.title}
                   category={project.category}
                   location={project.location}
-                  onClick={() => navigate(`/projects/unbuilt/${project.slug}`)}
+                  to={`/projects/unbuilt/${project.slug}`}
                   className={`${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                   }`}

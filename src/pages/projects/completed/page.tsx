@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -31,8 +31,6 @@ const categories = [
 export default function CompletedProjects() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
@@ -45,8 +43,8 @@ export default function CompletedProjects() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Completed Architecture & Interior Design Projects | Sanctuary"
-        description="Explore completed architecture and interior design projects by Sanctuary Architects — luxury villas, resorts, residences and commercial spaces that embody timeless design and craftsmanship."
+        title="Completed Architecture Projects | Sanctuary"
+        description="Completed architecture and interior design projects by Sanctuary — luxury villas, resorts, residences and commercial spaces."
         keywords="completed architecture projects, luxury villa portfolio, finished residential projects, Sanctuary Architects completed works, architectural portfolio India"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620637/LEVITATING_HOUSE_-_compl_13_i8osvt.jpg"
         canonicalPath="/projects/completed"
@@ -85,9 +83,9 @@ export default function CompletedProjects() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
               {categories.map((cat, index) => (
-                <button
+                <Link
                   key={cat.label}
-                  onClick={() => navigate(cat.href)}
+                  to={cat.href}
                   className={`group text-left transition-all duration-700 ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                   }`}
@@ -108,7 +106,7 @@ export default function CompletedProjects() {
                   <span className="inline-flex items-center gap-2 text-xs font-label font-semibold text-primary-500 tracking-wide group-hover:gap-3 transition-all duration-300">
                     Explore {cat.label} <i className="ri-arrow-right-line" />
                   </span>
-                </button>
+                </Link>
               ))}
             </div>
           </div>

@@ -1,11 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageMeta from "@/components/feature/PageMeta";
 
 export default function ComingSoon({ title }: { title?: string }) {
-  const navigate = useNavigate();
-
   return (
     <div className="relative bg-background-50">
       <PageMeta
@@ -49,18 +47,18 @@ export default function ComingSoon({ title }: { title?: string }) {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button
-              onClick={() => navigate("/")}
+            <Link
+              to="/"
               className="btn-luxury w-full sm:w-auto px-8 py-3.5 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 hover:shadow-[0_0_32px_rgba(166,124,82,0.35)] active:scale-[0.97] whitespace-nowrap"
             >
               Return Home
-            </button>
-            <button
-              onClick={() => navigate("/projects/completed")}
+            </Link>
+            <Link
+              to="/projects/completed"
               className="w-full sm:w-auto px-8 py-3.5 border border-secondary-200/50 text-foreground-800 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-secondary-100/50 hover:border-secondary-300/50 transition-all duration-400 active:scale-[0.97] whitespace-nowrap"
             >
               Explore Projects
-            </button>
+            </Link>
           </div>
         </div>
       </main>

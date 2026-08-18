@@ -115,7 +115,7 @@ export default function ContactPage() {
     <div className="relative bg-background-50">
       <PageMeta
         title="Contact Sanctuary Architects & Designers | Bangalore"
-        description="Get in touch with Sanctuary Architects & Designers in Bengaluru. Book a consultation, visit our studio in Sadashiva Nagar, call +91 98450 03452, or WhatsApp us to discuss your architecture project."
+        description="Contact Sanctuary Architects & Designers in Bangalore for architecture and interior design consultations. Visit our Sadashiva Nagar studio or WhatsApp us."
         keywords="contact architects Bengaluru, luxury architecture consultation, interior design enquiry, Sanctuary Architects contact, book architecture consultation"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620568/DSC02071_Large_z4brnd.jpg"
         schema={contactSchema}

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -7,8 +7,6 @@ import PageMeta from "@/components/feature/PageMeta";
 import { buildBreadcrumbSchema } from "@/utils/seo";
 
 export default function Projects() {
-  const navigate = useNavigate();
-
   const categories = [
     {
       title: "Completed Projects",
@@ -36,8 +34,8 @@ export default function Projects() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Architecture & Design Projects | Sanctuary Architects & Designers"
-        description="Explore Sanctuary Architects & Designers' portfolio — completed, ongoing and unbuilt architecture projects across residential, hospitality, commercial, prefab and master planning."
+        title="Architecture & Design Projects | Sanctuary"
+        description="Explore Sanctuary Architects & Designers' completed, ongoing and unbuilt portfolio across residential, hospitality, commercial and prefab architecture."
         keywords="architecture projects, luxury villa projects, residential architecture, hospitality design, commercial projects, Sanctuary Architects portfolio"
         ogImage="https://readdy.ai/api/search-image?query=Luxury%20architecture%20portfolio%2C%20collection%20of%20modern%20villa%20resort%20and%20commercial%20building%20designs%2C%20warm%20stone%20glass%20and%20wood%20materials%2C%20sophisticated%20contemporary%20architecture%2C%20golden%20hour%20lighting%2C%20editorial%20architectural%20photography%2C%20warm%20earth%20tones%2C%20refined%20atmosphere&width=1920&height=1080&seq=projects-hub-hero&orientation=landscape"
         canonicalPath="/projects"
@@ -85,13 +83,13 @@ export default function Projects() {
                     <p className="text-sm md:text-base font-body text-secondary-600 leading-relaxed mb-8 max-w-lg">
                       {cat.description}
                     </p>
-                    <button
-                      onClick={() => navigate(cat.href)}
+                    <Link
+                      to={cat.href}
                       className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap"
                     >
                       {cat.label}
                       <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               ))}

@@ -25,7 +25,7 @@ export default function Home() {
     <div className="relative">
       <PageMeta
         title="Architects & Interior Designers in Bangalore | Sanctuary"
-        description="Sanctuary Architects & Designers — architects and interior designers in Bangalore since 2003, crafting timeless luxury villas, hospitality spaces, commercial architecture and prefab design across India."
+        description="Sanctuary Architects & Designers is a Bangalore architecture and interior design studio, creating residential, hospitality, commercial and prefab projects since 2003."
         keywords="architects in Bangalore, architecture firms in Bangalore, interior designers in Bangalore, residential architects, hospitality architects, commercial architects, prefab architecture, Sanctuary Architects"
         schema={servicesSchema}
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620569/LEVITATING_HOUSE_-_13_u0ygk7.jpg"

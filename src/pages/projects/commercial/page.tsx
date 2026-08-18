@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -12,8 +12,6 @@ import { commercialProjects } from "@/mocks/commercialProjects";
 export default function CommercialProjects() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
@@ -26,8 +24,8 @@ export default function CommercialProjects() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Commercial Architects & Interior Designers in Bangalore | Sanctuary"
-        description="Commercial architecture and interior design in Bangalore by Sanctuary Architects — offices and workplaces designed for productivity, brand identity and growth."
+        title="Commercial Architects in Bangalore | Sanctuary"
+        description="Commercial architecture and interior design in Bangalore by Sanctuary — offices, workplaces and retail spaces designed for productivity and growth."
         keywords="commercial architects Bangalore, office design, retail architecture, mixed-use development, corporate workspace design, Sanctuary commercial projects"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620636/COVER_PHOTO_commercial_jknfuc.jpg"
         canonicalPath="/projects/commercial"
@@ -65,7 +63,7 @@ export default function CommercialProjects() {
                   title={project.title}
                   category={project.category}
                   location={`${project.name} — ${project.location}`}
-                  onClick={() => navigate(`/projects/commercial/${project.slug}`)}
+                  to={`/projects/commercial/${project.slug}`}
                   className={`${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                   }`}

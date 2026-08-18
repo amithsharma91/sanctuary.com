@@ -41,7 +41,7 @@ export default function About() {
     <div className="relative bg-background-50">
       <PageMeta
         title="About Sanctuary Architects & Designers | Bangalore"
-        description="Best Architects & Interior Designers in Bangalore — Sanctuary Architects & Designers, founded in August 2003 by Principal Architect Anshul Chodha. Architecture and spatial design for homes, restaurants, bars, cafés, spas, salons and offices across India and abroad."
+        description="Sanctuary Architects & Designers is a Bangalore architecture and interior design studio founded in 2003 by Anshul Chodha, designing homes and hospitality spaces across India."
         keywords="about Sanctuary Architects, architecture studio Bangalore, interior designers Bangalore, Anshul Chodha architect, design philosophy, wabi sabi architecture, sustainable architecture India"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786006616/COVER_PHOTO_ioojgq.jpg"
         schema={aboutSchema}

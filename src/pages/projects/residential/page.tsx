@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -16,13 +16,11 @@ const CHODHA_COVER = "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786009
 const ARORA_COVER = "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786010490/COVER_PHOTO_apxt2t.png";
 
 export default function ResidentialProjects() {
-  const navigate = useNavigate();
-
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Residential Architects in Bangalore | Sanctuary Architects"
-        description="Luxury residential architecture and interior design in Bangalore — Villa Maaya, Villa Nirvaana, Villa Praana, Levitating House, Kabini House and more by Sanctuary Architects & Designers."
+        title="Residential Architects in Bangalore | Sanctuary"
+        description="Luxury residential architecture and interior design in Bangalore — villas, homes and private residences by Sanctuary Architects & Designers."
         keywords="residential architects Bangalore, luxury villa design, custom home design India, Villa Maaya, Villa Nirvaana, Villa Praana, Levitating House, Kabini House, Sanctuary residential projects"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620569/DSC00396-HDR-Edit_itejfy.jpg"
         canonicalPath="/projects/residential"
@@ -52,12 +50,12 @@ export default function ResidentialProjects() {
         <section className="py-16 md:py-24 bg-background-50">
           <div className="w-full px-6 md:px-10 lg:px-14">
             <div className="max-w-4xl mx-auto space-y-20 md:space-y-28">
-              <VillaMaayaCard onViewProject={() => navigate("/projects/residential/villa-maaya")} />
-              <VillaNirvaanaCard onViewProject={() => navigate("/projects/residential/villa-nirvaana")} />
-              <VillaPranaCard onViewProject={() => navigate("/projects/residential/villa-prana")} />
-              <LevitatingHouseCard onViewProject={() => navigate("/projects/residential/levitating-house")} />
-              <ChodhaResidenceCard onViewProject={() => navigate("/projects/residential/chodha-residence")} />
-              <AroraHouseCard onViewProject={() => navigate("/projects/residential/arora-house")} />
+              <VillaMaayaCard />
+              <VillaNirvaanaCard />
+              <VillaPranaCard />
+              <LevitatingHouseCard />
+              <ChodhaResidenceCard />
+              <AroraHouseCard />
             </div>
           </div>
         </section>
@@ -69,7 +67,7 @@ export default function ResidentialProjects() {
   );
 }
 
-function VillaMaayaCard({ onViewProject }: { onViewProject: () => void }) {
+function VillaMaayaCard() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -97,13 +95,13 @@ function VillaMaayaCard({ onViewProject }: { onViewProject: () => void }) {
           <div className="flex items-center gap-2"><i className="ri-map-pin-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">Bengaluru Rural</span></div>
           <div className="flex items-center gap-2"><i className="ri-ruler-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">3800 SQFT</span></div>
         </div>
-        <button onClick={onViewProject} className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></button>
+        <Link to="/projects/residential/villa-maaya" className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></Link>
       </div>
     </div>
   );
 }
 
-function VillaNirvaanaCard({ onViewProject }: { onViewProject: () => void }) {
+function VillaNirvaanaCard() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -131,13 +129,13 @@ function VillaNirvaanaCard({ onViewProject }: { onViewProject: () => void }) {
           <div className="flex items-center gap-2"><i className="ri-map-pin-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">Bengaluru Rural</span></div>
           <div className="flex items-center gap-2"><i className="ri-ruler-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">3530 SQFT</span></div>
         </div>
-        <button onClick={onViewProject} className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></button>
+        <Link to="/projects/residential/villa-nirvaana" className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></Link>
       </div>
     </div>
   );
 }
 
-function VillaPranaCard({ onViewProject }: { onViewProject: () => void }) {
+function VillaPranaCard() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -165,13 +163,13 @@ function VillaPranaCard({ onViewProject }: { onViewProject: () => void }) {
           <div className="flex items-center gap-2"><i className="ri-map-pin-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">Bengaluru Rural</span></div>
           <div className="flex items-center gap-2"><i className="ri-ruler-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">3900 SQFT</span></div>
         </div>
-        <button onClick={onViewProject} className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></button>
+        <Link to="/projects/residential/villa-prana" className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></Link>
       </div>
     </div>
   );
 }
 
-function LevitatingHouseCard({ onViewProject }: { onViewProject: () => void }) {
+function LevitatingHouseCard() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -199,13 +197,13 @@ function LevitatingHouseCard({ onViewProject }: { onViewProject: () => void }) {
           <div className="flex items-center gap-2"><i className="ri-map-pin-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">Goa</span></div>
           <div className="flex items-center gap-2"><i className="ri-ruler-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">4500 SQFT</span></div>
         </div>
-        <button onClick={onViewProject} className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></button>
+        <Link to="/projects/residential/levitating-house" className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></Link>
       </div>
     </div>
   );
 }
 
-function ChodhaResidenceCard({ onViewProject }: { onViewProject: () => void }) {
+function ChodhaResidenceCard() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -233,13 +231,13 @@ function ChodhaResidenceCard({ onViewProject }: { onViewProject: () => void }) {
           <div className="flex items-center gap-2"><i className="ri-map-pin-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">Bangalore</span></div>
           <div className="flex items-center gap-2"><i className="ri-ruler-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">6000 SQFT</span></div>
         </div>
-        <button onClick={onViewProject} className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></button>
+        <Link to="/projects/residential/chodha-residence" className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></Link>
       </div>
     </div>
   );
 }
 
-function AroraHouseCard({ onViewProject }: { onViewProject: () => void }) {
+function AroraHouseCard() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -267,7 +265,7 @@ function AroraHouseCard({ onViewProject }: { onViewProject: () => void }) {
           <div className="flex items-center gap-2"><i className="ri-map-pin-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">Bangalore</span></div>
           <div className="flex items-center gap-2"><i className="ri-ruler-line text-primary-500 text-sm" /><span className="text-xs font-body text-secondary-600">8000 SQFT</span></div>
         </div>
-        <button onClick={onViewProject} className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></button>
+        <Link to="/projects/residential/arora-house" className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap">View Project <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" /></Link>
       </div>
     </div>
   );

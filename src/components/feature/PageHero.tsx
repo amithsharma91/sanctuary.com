@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 interface BreadcrumbItem {
   label: string;
@@ -13,8 +13,6 @@ interface PageHeroProps {
 }
 
 export default function PageHero({ title, subtitle, image, breadcrumb }: PageHeroProps) {
-  const navigate = useNavigate();
-
   return (
     <section className="relative w-full min-h-[55vh] md:min-h-[60vh] flex items-end pb-14 md:pb-20 overflow-hidden">
       {/* Background Image */}
@@ -22,6 +20,8 @@ export default function PageHero({ title, subtitle, image, breadcrumb }: PageHer
         <img
           src={image}
           alt={title}
+          loading="eager"
+          fetchPriority="high"
           className="w-full h-full object-cover object-top"
         />
       </div>
@@ -33,22 +33,22 @@ export default function PageHero({ title, subtitle, image, breadcrumb }: PageHer
       <div className="relative z-10 w-full px-6 md:px-10 lg:px-14">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 mb-6 text-xs font-body tracking-[0.04em]">
-          <button
-            onClick={() => navigate("/")}
+          <Link
+            to="/"
             className="text-background-200/70 hover:text-background-50 transition-colors duration-300"
           >
             Home
-          </button>
+          </Link>
           {breadcrumb.map((item, i) => (
             <span key={i} className="flex items-center gap-2">
               <i className="ri-arrow-right-s-line text-background-200/40 text-[10px]" />
               {item.href ? (
-                <button
-                  onClick={() => navigate(item.href!)}
+                <Link
+                  to={item.href}
                   className="text-background-200/70 hover:text-background-50 transition-colors duration-300"
                 >
                   {item.label}
-                </button>
+                </Link>
               ) : (
                 <span className="text-background-50">{item.label}</span>
               )}

@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function AboutPreview() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -65,8 +64,8 @@ export default function AboutPreview() {
               Restaurants, Bars, Cafés, Spas, Salons and Offices, to very intimate
               as well as lavish Homes.
             </p>
-            <button
-              onClick={() => navigate("/about")}
+            <Link
+              to="/about"
               className={`btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
@@ -74,7 +73,7 @@ export default function AboutPreview() {
             >
               Explore Our Philosophy
               <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" />
-            </button>
+            </Link>
           </div>
 
           {/* Image — RIGHT */}

@@ -1,16 +1,15 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PageLayout from "@/components/feature/PageLayout";
 import PageMeta from "@/components/feature/PageMeta";
 
 export default function NotFound() {
-  const navigate = useNavigate();
-
   return (
     <PageLayout>
       <PageMeta
-        title="Page Not Found"
+        title="Page Not Found | Sanctuary"
         description="The page you're looking for doesn't exist. Return to the Sanctuary Architects homepage to explore our portfolio of luxury architecture and interior design."
         canonicalPath=""
+        robots="noindex, follow"
       />
       <main className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         {/* Background */}
@@ -39,24 +38,24 @@ export default function NotFound() {
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-            <button
-              onClick={() => navigate("/")}
+            <Link
+              to="/"
               className="btn-luxury w-full sm:w-auto px-8 py-3.5 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 hover:shadow-[0_0_32px_rgba(166,124,82,0.35)] active:scale-[0.97] whitespace-nowrap"
             >
               Return Home
-            </button>
-            <button
-              onClick={() => navigate("/projects/completed")}
+            </Link>
+            <Link
+              to="/projects/completed"
               className="w-full sm:w-auto px-8 py-3.5 border border-secondary-200/50 text-foreground-800 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-secondary-100/50 hover:border-secondary-300/50 transition-all duration-400 active:scale-[0.97] whitespace-nowrap"
             >
               Explore Projects
-            </button>
-            <button
-              onClick={() => navigate("/contact")}
+            </Link>
+            <Link
+              to="/contact"
               className="w-full sm:w-auto px-8 py-3.5 border border-secondary-200/50 text-foreground-800 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-secondary-100/50 hover:border-secondary-300/50 transition-all duration-400 active:scale-[0.97] whitespace-nowrap"
             >
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
       </main>

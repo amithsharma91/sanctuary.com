@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageMeta from "@/components/feature/PageMeta";
@@ -29,7 +29,6 @@ interface LBImage {
 }
 
 export default function Bellevue() {
-  const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState<LBImage[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -98,11 +97,11 @@ export default function Bellevue() {
 
           <div className="relative z-10 w-full px-6 md:px-10 lg:px-14">
             <nav className="flex items-center gap-2 mb-6 text-xs font-body tracking-[0.04em] flex-wrap">
-              <button onClick={() => navigate("/")} className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Home</button>
+              <Link to="/" className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Home</Link>
               <i className="ri-arrow-right-s-line text-background-200/40 text-[10px]" />
-              <button onClick={() => navigate("/projects")} className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Projects</button>
+              <Link to="/projects" className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Projects</Link>
               <i className="ri-arrow-right-s-line text-background-200/40 text-[10px]" />
-              <button onClick={() => navigate("/projects/unbuilt")} className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Unbuilt Projects</button>
+              <Link to="/projects/unbuilt" className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Unbuilt Projects</Link>
               <i className="ri-arrow-right-s-line text-background-200/40 text-[10px]" />
               <span className="text-background-50">Bellevue</span>
             </nav>
@@ -224,20 +223,20 @@ export default function Bellevue() {
               Every great project begins with a conversation. Let us bring your vision to life.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                onClick={() => navigate("/contact")}
+              <Link
+                to="/contact"
                 className="btn-luxury inline-flex items-center gap-2 px-9 py-3.5 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 hover:shadow-[0_0_32px_rgba(166,124,82,0.35)] active:scale-[0.97] whitespace-nowrap"
               >
                 Start Your Project
                 <i className="ri-arrow-right-line" />
-              </button>
-              <button
-                onClick={() => navigate("/contact")}
+              </Link>
+              <Link
+                to="/contact"
                 className="btn-luxury inline-flex items-center gap-2 px-9 py-3.5 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap"
               >
                 Contact Us
                 <i className="ri-arrow-right-line" />
-              </button>
+              </Link>
             </div>
           </div>
         </section>

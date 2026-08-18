@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function CTASection() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -59,18 +58,18 @@ export default function CTASection() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <button
-              onClick={() => navigate("/contact")}
+            <Link
+              to="/contact"
               className="btn-luxury w-full sm:w-auto px-9 py-3.5 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 hover:shadow-[0_6px_24px_rgba(166,124,82,0.2)] active:scale-[0.97] whitespace-nowrap"
             >
               Book Consultation
-            </button>
-            <button
-              onClick={() => navigate("/contact")}
+            </Link>
+            <Link
+              to="/contact"
               className="w-full sm:w-auto px-9 py-3.5 border border-background-200/30 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-background-50/10 hover:border-background-50/50 transition-all duration-400 active:scale-[0.97] whitespace-nowrap"
             >
               Contact Us
-            </button>
+            </Link>
           </div>
         </div>
       </div>

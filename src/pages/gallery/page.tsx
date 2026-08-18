@@ -49,7 +49,7 @@ export default function Gallery() {
     <div className="relative bg-background-50">
       <PageMeta
         title="Architecture & Interior Design Portfolio | Sanctuary"
-        description="Explore the architecture and interior design portfolio of Sanctuary Architects & Designers — curated photography of luxury villas, hospitality and commercial projects in Bangalore."
+        description="Explore the architecture and interior design portfolio of Sanctuary — curated photography of luxury villas, hospitality and commercial projects in Bangalore."
         keywords="architecture gallery, luxury villa photography, interior design portfolio, architectural photography Bangalore, Sanctuary Architects gallery"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620570/11_avf6o6.jpg"
         schema={gallerySchema}

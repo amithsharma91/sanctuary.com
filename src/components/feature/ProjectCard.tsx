@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { Link } from "react-router-dom";
 import SmartAspectImage from "@/components/feature/SmartAspectImage";
 
 interface ProjectCardProps {
@@ -7,6 +8,7 @@ interface ProjectCardProps {
   title: string;
   location?: string;
   category?: string;
+  to?: string;
   onClick?: () => void;
   /** overlay: image with gradient + identity overlay (home featured). content: image with text below. */
   variant?: "overlay" | "content";
@@ -33,6 +35,7 @@ export default function ProjectCard({
   title,
   location,
   category,
+  to,
   onClick,
   variant = "content",
   eager = false,
@@ -44,14 +47,9 @@ export default function ProjectCard({
   children,
 }: ProjectCardProps) {
   if (variant === "overlay") {
-    return (
-      <button
-        type="button"
-        onClick={onClick}
-        aria-label={`${title}${location ? ` — ${location}` : ""}`}
-        className={`group relative image-reveal rounded-lg overflow-hidden border border-secondary-200/30 bg-background-100 text-left transition-all duration-500 cursor-pointer ${className}`}
-        style={style}
-      >
+    const overlayClassName = `group relative image-reveal rounded-lg overflow-hidden border border-secondary-200/30 bg-background-100 text-left transition-all duration-500 cursor-pointer ${className}`;
+    const overlayContent = (
+      <>
         <SmartAspectImage
           src={image}
           alt={alt}
@@ -88,7 +86,62 @@ export default function ProjectCard({
             </span>
           )}
         </div>
+      </>
+    );
+
+    if (to) {
+      return (
+        <Link
+          to={to}
+          aria-label={`${title}${location ? ` — ${location}` : ""}`}
+          className={overlayClassName}
+          style={style}
+        >
+          {overlayContent}
+        </Link>
+      );
+    }
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        aria-label={`${title}${location ? ` — ${location}` : ""}`}
+        className={overlayClassName}
+        style={style}
+      >
+        {overlayContent}
       </button>
+    );
+  }
+
+  const contentClassName = `group text-left transition-all duration-700 cursor-pointer ${className}`;
+  if (to) {
+    return (
+      <Link
+        to={to}
+        className={contentClassName}
+        style={style}
+      >
+        <div className="image-reveal rounded-lg overflow-hidden border border-secondary-200/30 mb-5 bg-background-100">
+          <SmartAspectImage
+            src={image}
+            alt={alt}
+            eager={eager}
+            fixedAspect={fixedAspect}
+            className="transition-transform duration-800 group-hover:scale-105"
+          />
+        </div>
+        {category && (
+          <span className="text-[10px] font-body tracking-[0.15em] uppercase text-primary-500">
+            {category}
+          </span>
+        )}
+        <h3 className="font-heading text-2xl md:text-3xl font-light text-foreground-950 mt-1 mb-1 group-hover:text-primary-500 transition-colors duration-300">
+          {title}
+        </h3>
+        {location && <p className="text-xs font-body text-secondary-500 mb-2">{location}</p>}
+        {children}
+      </Link>
     );
   }
 
@@ -96,7 +149,7 @@ export default function ProjectCard({
     <button
       type="button"
       onClick={onClick}
-      className={`group text-left transition-all duration-700 cursor-pointer ${className}`}
+      className={contentClassName}
       style={style}
     >
       <div className="image-reveal rounded-lg overflow-hidden border border-secondary-200/30 mb-5 bg-background-100">

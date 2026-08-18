@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageMeta from "@/components/feature/PageMeta";
@@ -7,8 +7,6 @@ import Lightbox from "@/components/feature/Lightbox";
 import { sanctuaryProjects } from "@/mocks/sanctuaryProjects";
 import { commercialProjects } from "@/mocks/commercialProjects";
 import { residentialProjects, hospitalityProjects } from "@/mocks/projectCollections";
-import { unbuiltProjects } from "@/mocks/unbuiltProjects";
-import { ongoingProjects } from "@/mocks/ongoingProjects";
 import { buildBreadcrumbSchema, absoluteUrl, SITE_URL } from "@/utils/seo";
 
 interface ProjectDetailData {
@@ -19,7 +17,8 @@ interface ProjectDetailData {
   location: string;
   category: string;
   year: string;
-  shortDescription: string;
+  shortDescription?: string;
+  description?: string;
   architectStory?: string;
   heroImage?: string;
   image?: string;
@@ -33,13 +32,10 @@ const allProjects: ProjectDetailData[] = [
   ...commercialProjects,
   ...residentialProjects,
   ...hospitalityProjects,
-  ...unbuiltProjects,
-  ...ongoingProjects,
 ];
 
 export default function ProjectDetail() {
   const { projectSlug } = useParams<{ projectSlug: string }>();
-  const navigate = useNavigate();
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
@@ -56,12 +52,12 @@ export default function ProjectDetail() {
             </div>
             <h1 className="font-heading text-3xl font-light text-foreground-950 mb-3">Project Not Found</h1>
             <p className="text-sm font-body text-secondary-500 mb-8">The project you are looking for does not exist or has been moved.</p>
-            <button
-              onClick={() => navigate("/projects")}
+            <Link
+              to="/projects"
               className="btn-luxury px-7 py-3 bg-primary-500 text-background-50 text-sm font-label font-semibold rounded-md hover:bg-primary-600 transition-all duration-400 whitespace-nowrap"
             >
               View All Projects
-            </button>
+            </Link>
           </div>
         </main>
         <Footer />
@@ -71,6 +67,21 @@ export default function ProjectDetail() {
 
   const projectTitle = project.title || project.name || "Project";
   const projectFullName = project.fullName || `${project.name || ""} — ${project.title || ""}`.trim();
+  const rawDescription = (project.shortDescription || project.description || "").trim();
+  const shortDescription = rawDescription;
+  const normalizedDescription = shortDescription.toLowerCase().replace(/[’']/g, "");
+  const normalizedLocation = project.location.toLowerCase().replace(/[’']/g, "");
+  const locationWords = normalizedLocation.split(/[^a-z0-9]+/).filter(Boolean);
+  const hasLocation = normalizedDescription.includes(normalizedLocation) ||
+    locationWords.length > 0 && locationWords.every((word) => normalizedDescription.includes(word));
+  const hasDesignerAttribution = /designed\s+by\s+sanctuary(?:\s+architects?\s*(?:&|and)\s*designers?)?/i.test(shortDescription);
+  const projectDescription = [
+    shortDescription,
+    ...(!hasLocation && project.location ? [`Located in ${project.location}.`] : []),
+    ...(!hasDesignerAttribution ? ["Designed by Sanctuary Architects & Designers."] : []),
+  ].join(" ");
+  const projectMetaDescription = projectDescription.replace(/\s+([,.!?])/g, "$1");
+  const projectMetaTitle = `${projectTitle} | ${project.category} | Sanctuary Architects`;
   const highlights = project.designHighlights || [
     { title: "Natural Lighting", description: "Abundant natural light through strategically placed openings and skylights.", icon: "ri-sun-line" },
     { title: "Material Palette", description: "Carefully curated materials that age gracefully and tell a story.", icon: "ri-stack-line" },
@@ -84,13 +95,8 @@ export default function ProjectDetail() {
   const heroImage = project.heroImage || project.image || "";
 
   // ==== SEO: category-aware canonical + structured data ====
-  const isUnbuiltProject = unbuiltProjects.some((p) => p.slug === project.slug);
-  const isOngoingProject = ongoingProjects.some((p) => p.slug === project.slug);
-
   let canonicalPath = `/projects/${project.slug}`;
-  if (isUnbuiltProject) {
-    canonicalPath = `/projects/unbuilt/${project.slug}`;
-  } else if (!project.slug.includes("/")) {
+  if (!project.slug.includes("/")) {
     const categoryKey = (project.category || "").toLowerCase();
     if (categoryKey.includes("hospitality")) canonicalPath = `/projects/hospitality/${project.slug}`;
     else if (categoryKey.includes("commercial")) canonicalPath = `/projects/commercial/${project.slug}`;
@@ -101,27 +107,19 @@ export default function ProjectDetail() {
 
   let sectionLabel = project.category;
   let sectionPath = "/projects";
-  if (isUnbuiltProject) {
-    sectionLabel = "Unbuilt Projects";
-    sectionPath = "/projects/unbuilt";
-  } else if (isOngoingProject) {
-    sectionLabel = "Ongoing Projects";
-    sectionPath = "/projects/ongoing";
-  } else {
-    const categoryKey = (project.category || "").toLowerCase();
-    if (categoryKey.includes("hospitality")) {
-      sectionLabel = "Hospitality";
-      sectionPath = "/projects/hospitality";
-    } else if (categoryKey.includes("commercial")) {
-      sectionLabel = "Commercial";
-      sectionPath = "/projects/commercial";
-    } else if (categoryKey.includes("prefab")) {
-      sectionLabel = "Prefab";
-      sectionPath = "/projects/prefab";
-    } else if (categoryKey.includes("residential") || categoryKey.includes("luxury villa")) {
-      sectionLabel = "Residential";
-      sectionPath = "/projects/residential";
-    }
+  const categoryKey = (project.category || "").toLowerCase();
+  if (categoryKey.includes("hospitality")) {
+    sectionLabel = "Hospitality";
+    sectionPath = "/projects/hospitality";
+  } else if (categoryKey.includes("commercial")) {
+    sectionLabel = "Commercial";
+    sectionPath = "/projects/commercial";
+  } else if (categoryKey.includes("prefab")) {
+    sectionLabel = "Prefab";
+    sectionPath = "/projects/prefab";
+  } else if (categoryKey.includes("residential") || categoryKey.includes("luxury villa")) {
+    sectionLabel = "Residential";
+    sectionPath = "/projects/residential";
   }
 
   const projectBreadcrumbSchema = buildBreadcrumbSchema([
@@ -135,7 +133,7 @@ export default function ProjectDetail() {
     "@context": "https://schema.org",
     "@type": "CreativeWork",
     name: projectTitle,
-    description: project.shortDescription,
+    description: shortDescription,
     url: absoluteUrl(canonicalPath),
     image: heroImage,
     creator: {
@@ -159,8 +157,8 @@ export default function ProjectDetail() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title={`${projectTitle} | ${project.category} | Sanctuary Architects`}
-        description={`${project.shortDescription} Located in ${project.location}, this ${project.category.toLowerCase()} project was designed by Sanctuary Architects & Designers, Bangalore.`}
+        title={projectMetaTitle}
+        description={projectMetaDescription}
         keywords={`${project.category.toLowerCase()} architecture, ${project.location.toLowerCase()} project, Sanctuary Architects, ${projectTitle.toLowerCase()}`}
         ogImage={heroImage}
         canonicalPath={canonicalPath}
@@ -175,6 +173,8 @@ export default function ProjectDetail() {
             <img
               src={heroImage}
               alt={projectFullName}
+              loading="eager"
+              fetchPriority="high"
               className="w-full h-full object-cover object-top"
             />
           </div>
@@ -182,9 +182,9 @@ export default function ProjectDetail() {
 
           <div className="relative z-10 w-full px-6 md:px-10 lg:px-14">
             <nav className="flex items-center gap-2 mb-6 text-xs font-body tracking-[0.04em]">
-              <button onClick={() => navigate("/")} className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Home</button>
+              <Link to="/" className="text-background-200/70 hover:text-background-50 transition-colors duration-300">Home</Link>
               <i className="ri-arrow-right-s-line text-background-200/40 text-[10px]" />
-              <button onClick={() => navigate(sectionPath)} className="text-background-200/70 hover:text-background-50 transition-colors duration-300">{sectionLabel}</button>
+              <Link to={sectionPath} className="text-background-200/70 hover:text-background-50 transition-colors duration-300">{sectionLabel}</Link>
               <i className="ri-arrow-right-s-line text-background-200/40 text-[10px]" />
               <span className="text-background-50">{projectTitle}</span>
             </nav>
@@ -304,13 +304,13 @@ export default function ProjectDetail() {
             <p className="text-sm font-body text-secondary-500 mb-10 max-w-md mx-auto">
               Every great project begins with a conversation. Let us bring your vision to life.
             </p>
-            <button
-              onClick={() => navigate("/contact")}
+            <Link
+              to="/contact"
               className="btn-luxury inline-flex items-center gap-2 px-9 py-3.5 bg-primary-500 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-primary-600 transition-all duration-500 hover:shadow-[0_0_32px_rgba(166,124,82,0.35)] active:scale-[0.97] whitespace-nowrap"
             >
               Contact Us
               <i className="ri-arrow-right-line" />
-            </button>
+            </Link>
           </div>
         </section>
 

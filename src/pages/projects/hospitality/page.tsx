@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -15,13 +15,11 @@ const orderedHospitalityProjects = hospitalityProjectsOrder
   .filter((project): project is NonNullable<typeof project> => Boolean(project));
 
 export default function HospitalityProjects() {
-  const navigate = useNavigate();
-
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Hospitality Architects & Interior Designers | Sanctuary"
-        description="Hospitality architecture and interior design by Sanctuary Architects — hotels, resorts, restaurants and bars crafted to create memorable guest experiences."
+        title="Hospitality Architecture & Interior Design | Sanctuary"
+        description="Hospitality architecture and interior design by Sanctuary — hotels, resorts, restaurants and bars crafted to create memorable guest experiences."
         keywords="hospitality architecture India, resort design, hotel architecture, restaurant interior designers Bangalore, luxury hospitality design, Sanctuary hospitality projects"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620637/PUMA_SOCIAL_CLUB_hoas_mf5sxf.jpg"
         canonicalPath="/projects/hospitality"
@@ -56,7 +54,6 @@ export default function HospitalityProjects() {
                   key={project.slug}
                   project={project}
                   index={index}
-                  onViewProject={() => navigate(`/projects/hospitality/${project.slug}`)}
                 />
               ))}
             </div>
@@ -73,11 +70,9 @@ export default function HospitalityProjects() {
 function HospitalityProjectSection({
   project,
   index,
-  onViewProject,
 }: {
   project: any;
   index: number;
-  onViewProject: () => void;
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -132,13 +127,13 @@ function HospitalityProjectSection({
             </div>
           ))}
         </div>
-        <button
-          onClick={onViewProject}
+        <Link
+          to={`/projects/hospitality/${project.slug}`}
           className="btn-luxury group inline-flex items-center gap-2 px-7 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap"
         >
           View Project
           <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" />
-        </button>
+        </Link>
       </div>
     </div>
   );

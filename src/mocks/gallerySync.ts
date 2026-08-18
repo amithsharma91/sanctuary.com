@@ -54,7 +54,7 @@ function buildGalleryFromProjects(): GalleryImage[] {
 
   // Add galleryImages from projects that have them
   for (const project of allProjects) {
-    if (project.galleryImages && project.galleryImages.length > 0) {
+    if ('galleryImages' in project && project.galleryImages?.length > 0) {
       for (const img of project.galleryImages) {
         images.push({
           id: `gallery-synced-${idCounter++}`,
@@ -73,12 +73,19 @@ function buildGalleryFromProjects(): GalleryImage[] {
   // Also add the main project card image from every project
   for (const project of allProjects) {
     if (project.image) {
+      // Narrow project type using "in" operator for fullName and name
+      const hasFullName = "fullName" in project && typeof project.fullName === "string";
+      const hasName = "name" in project && typeof project.name === "string";
+
+      const effectiveFullName = hasFullName ? project.fullName : "";
+      const effectiveName = hasName ? project.name : project.title || "";
+
       images.push({
         id: `gallery-synced-${idCounter++}`,
         src: project.image,
-        alt: project.fullName || project.title || project.name || "",
+        alt: effectiveFullName || project.title || effectiveName || "",
         category: project.category || "Project",
-        projectName: project.title || project.name || "",
+        projectName: project.title || effectiveName || "",
         projectSlug: project.slug,
         projectLocation: project.location || "",
         landscape: true,
@@ -93,9 +100,9 @@ function buildGalleryFromProjects(): GalleryImage[] {
         images.push({
           id: `gallery-synced-${idCounter++}`,
           src: img,
-          alt: `${project.title || project.name} — Highlight`,
+          alt: `${project.title || project.name}! — Highlight`,
           category: "Highlight",
-          projectName: project.title || project.name || "",
+          projectName: project.title || (project.name || ""),
           projectSlug: project.slug,
           projectLocation: project.location || "",
           landscape: true,

@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { featuredGoogleReviews } from "@/mocks/googleReviews";
 
 export default function GoogleReviews() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -115,13 +114,13 @@ export default function GoogleReviews() {
           }`}
           style={{ transitionDelay: isVisible ? "800ms" : "0ms" }}
         >
-          <button
-            onClick={() => navigate("/testimonials")}
+          <Link
+            to="/testimonials"
             className="btn-luxury group inline-flex items-center gap-2 px-8 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 active:scale-[0.97] whitespace-nowrap"
           >
             View All Reviews
             <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

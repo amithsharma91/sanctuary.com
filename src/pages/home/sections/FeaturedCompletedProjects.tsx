@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ProjectCard from "@/components/feature/ProjectCard";
 import { residentialProjects } from "@/mocks/projectCollections";
 
@@ -15,7 +15,6 @@ const featuredProjects = residentialProjects.slice(0, 6);
 export default function FeaturedCompletedProjects() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,13 +55,13 @@ export default function FeaturedCompletedProjects() {
           }`}
         >
           {categoryTabs.map((cat) => (
-            <button
+            <Link
               key={cat.label}
-              onClick={() => navigate(cat.href)}
-              className="px-6 py-2.5 text-sm font-body tracking-wide rounded-full border border-secondary-200/40 text-foreground-700 hover:text-primary-500 hover:border-primary-300/40 bg-background-50 transition-all duration-400 whitespace-nowrap cursor-pointer"
+              to={cat.href}
+              className="px-6 py-2.5 text-sm font-body tracking-wide rounded-full border border-secondary-200/40 text-foreground-700 hover:text-primary-500 hover:border-primary-300/40 bg-background-50 transition-all duration-400 whitespace-nowrap"
             >
               {cat.label}
-            </button>
+            </Link>
           ))}
         </div>
 
@@ -80,7 +79,7 @@ export default function FeaturedCompletedProjects() {
               fixedAspect="aspect-[16/10]"
               persistentOverlay
               showViewLabel={false}
-              onClick={() => navigate(`/projects/residential/${project.slug}`)}
+              to={`/projects/residential/${project.slug}`}
               className={`${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
@@ -95,13 +94,13 @@ export default function FeaturedCompletedProjects() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <button
-            onClick={() => navigate("/projects/completed")}
+          <Link
+            to="/projects/completed"
             className="btn-luxury group inline-flex items-center gap-2 px-8 py-3 bg-foreground-950 text-background-50 text-sm font-label font-semibold tracking-wide rounded-md hover:bg-foreground-800 transition-all duration-500 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] active:scale-[0.97] whitespace-nowrap"
           >
             View All Projects
             <i className="ri-arrow-right-line group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
+          </Link>
         </div>
       </div>
     </section>

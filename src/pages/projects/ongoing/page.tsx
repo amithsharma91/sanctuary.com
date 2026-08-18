@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -12,8 +11,6 @@ import { ongoingProjects } from "@/mocks/ongoingProjects";
 export default function OngoingProjects() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
@@ -26,8 +23,8 @@ export default function OngoingProjects() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Ongoing Architecture Projects | Sanctuary Architects"
-        description="Explore ongoing architecture projects by Sanctuary Architects & Designers — residences, resorts and developments taking shape across India, from foundation to finishing touches."
+        title="Ongoing Architecture Projects | Sanctuary"
+        description="Ongoing architecture projects by Sanctuary — residences, resorts and commercial developments currently taking shape across India."
         keywords="ongoing architecture projects, construction progress, current architectural works, Sanctuary Architects developments, architecture under construction India"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786692547/201_arsrxr.png"
         canonicalPath="/projects/ongoing"
@@ -65,7 +62,7 @@ export default function OngoingProjects() {
                   title={project.title}
                   category={project.category}
                   location={project.location}
-                  onClick={() => navigate(`/projects/${project.slug}`)}
+                  to={`/projects/${project.slug}`}
                   className={`${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                   }`}

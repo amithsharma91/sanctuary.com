@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { services } from "@/mocks/services";
 
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,26 +43,12 @@ export default function Services() {
         {/* Service Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {services.map((service, index) => {
-            const onClick = service.href ? () => navigate(service.href) : undefined;
-            return (
-              <div
-                key={service.title}
-                onClick={onClick}
-                onKeyDown={
-                  onClick
-                    ? (e) => {
-                        if (e.key === "Enter") onClick();
-                      }
-                    : undefined
-                }
-                role={onClick ? "button" : undefined}
-                tabIndex={onClick ? 0 : undefined}
-                aria-label={onClick ? `${service.title} — view ${service.title} page` : undefined}
-                className={`card-luxury group bg-background-50 rounded-lg p-6 md:p-8 border border-secondary-200/40 gold-glow cursor-pointer transition-all duration-500 ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: isVisible ? `${200 + index * 80}ms` : "0ms" }}
-              >
+            const cardClassName = `card-luxury group bg-background-50 rounded-lg p-6 md:p-8 border border-secondary-200/40 gold-glow transition-all duration-500 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`;
+            const cardStyle = { transitionDelay: isVisible ? `${200 + index * 80}ms` : "0ms" };
+            const cardContent = (
+              <>
                 {/* Icon */}
                 <div className="w-12 h-12 flex items-center justify-center rounded-md bg-primary-100/40 text-primary-500 mb-5 group-hover:bg-primary-500 group-hover:text-background-50 transition-all duration-500 group-hover:rotate-6">
                   <i className={`${service.icon} text-xl`} />
@@ -83,6 +68,28 @@ export default function Services() {
                 <span className="inline-flex items-center text-xs font-label font-semibold text-primary-500 tracking-wide opacity-0 group-hover:opacity-100 transition-all duration-400">
                   <i className="ri-arrow-right-line text-base" />
                 </span>
+              </>
+            );
+
+            if (service.href) {
+              return (
+                <Link
+                  key={service.title}
+                  to={service.href}
+                  className={`${cardClassName} cursor-pointer`}
+                  style={cardStyle}
+                >
+                  {cardContent}
+                </Link>
+              );
+            }
+            return (
+              <div
+                key={service.title}
+                className={`${cardClassName}`}
+                style={cardStyle}
+              >
+                {cardContent}
               </div>
             );
           })}

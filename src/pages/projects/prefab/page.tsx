@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/feature/Navbar";
 import Footer from "@/components/feature/Footer";
 import PageHero from "@/components/feature/PageHero";
@@ -23,8 +22,6 @@ const prefabProjects = [
 export default function PrefabProjects() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const navigate = useNavigate();
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
@@ -37,8 +34,8 @@ export default function PrefabProjects() {
   return (
     <div className="relative bg-background-50">
       <PageMeta
-        title="Prefab Architecture & Design | Sanctuary Architects"
-        description="Prefab architecture and design by Sanctuary Architects — portable, sustainable modular structures for terraces, farms and open landscapes."
+        title="Prefab Architecture & Design | Sanctuary"
+        description="Prefab architecture and design by Sanctuary — portable, sustainable modular structures for terraces, farms and open landscapes."
         keywords="prefab architecture, modular design, portable structures, sustainable construction, prefab projects India, Sanctuary prefab designs"
         ogImage="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786620636/COVER_PHOTO_p_re_ioc0rz.jpg"
         canonicalPath="/projects/prefab"
@@ -76,7 +73,7 @@ export default function PrefabProjects() {
                   title={project.title}
                   category={project.category}
                   location={`${project.location} — ${project.area}`}
-                  onClick={() => navigate(`/projects/prefab/${project.slug}`)}
+                  to={`/projects/prefab/${project.slug}`}
                   className={`${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                   }`}

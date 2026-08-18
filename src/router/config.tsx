@@ -1,68 +1,76 @@
+import { lazy } from "react";
 import type { RouteObject } from "react-router-dom";
-import NotFound from "../pages/NotFound";
 import Home from "../pages/home/page";
-import ProjectDetail from "../pages/projects/detail/page";
-import VillaMaaya from "../pages/projects/residential/villa-maaya/page";
-import LevitatingHouse from "../pages/projects/residential/levitating-house/page";
-import KabiniHouse from "../pages/projects/residential/kabini-house/page";
-import VillaNirvaana from "../pages/projects/residential/villa-nirvaana/page";
-import VillaPrana from "../pages/projects/residential/villa-prana/page";
-import ChodhaResidence from "../pages/projects/residential/chodha-residence/page";
-import AroraHouse from "../pages/projects/residential/arora-house/page";
-import SanctuaryOffice from "../pages/projects/commercial/sanctuary-office/page";
-import Kaze from "../pages/projects/hospitality/kaze/page";
+import NotFound from "../pages/NotFound";
 
-import Speakeasy from "../pages/projects/hospitality/speakeasy/page";
-import Sanctum from "../pages/projects/hospitality/sanctum/page";
-import Rubaiyat from "../pages/projects/hospitality/rubaiyat/page";
-import PumaSocialClub from "../pages/projects/hospitality/puma-social-club/page";
-import TapasMe from "../pages/projects/hospitality/tapas-me/page";
-import TheOpenBox from "../pages/projects/hospitality/the-open-box/page";
-import TajWestend from "../pages/projects/hospitality/taj-westend/page";
-import Gallery from "../pages/gallery/page";
-import Projects from "../pages/projects/page";
-import CompletedProjects from "../pages/projects/completed/page";
-import OngoingProjects from "../pages/projects/ongoing/page";
-import UnbuiltProjects from "../pages/projects/unbuilt/page";
-import ResidentialProjects from "../pages/projects/residential/page";
-import HospitalityProjects from "../pages/projects/hospitality/page";
-import CommercialProjects from "../pages/projects/commercial/page";
-import PrefabProjects from "../pages/projects/prefab/page";
-import About from "../pages/about/page";
-import Testimonials from "../pages/testimonials/page";
-import Clients from "../pages/clients/page";
-import ContactPage from "../pages/contact/page";
-import ThankYou from "../pages/ThankYou";
-import PrivacyPolicy from "../pages/PrivacyPolicy";
-import TermsAndConditions from "../pages/TermsAndConditions";
-import CookiePolicy from "../pages/CookiePolicy";
+// Lazy-loaded page components
+const About = lazy(() => import("../pages/about/page"));
+const Gallery = lazy(() => import("../pages/gallery/page"));
+const Projects = lazy(() => import("../pages/projects/page"));
+const CompletedProjects = lazy(() => import("../pages/projects/completed/page"));
+const OngoingProjects = lazy(() => import("../pages/projects/ongoing/page"));
+const UnbuiltProjects = lazy(() => import("../pages/projects/unbuilt/page"));
+const ResidentialProjects = lazy(() => import("../pages/projects/residential/page"));
+const HospitalityProjects = lazy(() => import("../pages/projects/hospitality/page"));
+const CommercialProjects = lazy(() => import("../pages/projects/commercial/page"));
+const PrefabProjects = lazy(() => import("../pages/projects/prefab/page"));
+const ProjectDetail = lazy(() => import("../pages/projects/detail/page"));
+const Testimonials = lazy(() => import("../pages/testimonials/page"));
+const Clients = lazy(() => import("../pages/clients/page"));
+const ContactPage = lazy(() => import("../pages/contact/page"));
+const Blog = lazy(() => import("../pages/blog/page"));
+const BlogArticle = lazy(() => import("../pages/blog/article/page"));
+const ThankYou = lazy(() => import("../pages/ThankYou"));
+const PrivacyPolicy = lazy(() => import("../pages/PrivacyPolicy"));
+const TermsAndConditions = lazy(() => import("../pages/TermsAndConditions"));
+const CookiePolicy = lazy(() => import("../pages/CookiePolicy"));
 
-// Ongoing project pages (existing detail pages reused)
-import EkaraResort from "../pages/projects/hospitality/ekara-resort/page";
-import NagarholeResort from "../pages/projects/hospitality/nagarhole-resort/page";
-import KarnatakaGolfAssociation from "../pages/projects/commercial/karnataka-golf-association/page";
-import Marina from "../pages/projects/residential/marina/page";
-import Shobhit from "../pages/projects/residential/shobhit/page";
-import VistaDoMarApartments from "../pages/projects/residential/vista-do-mar-apartments/page";
-import EkaSiteDevelopment from "../pages/projects/residential/eka-site-development/page";
-// New ongoing projects
-import BotanyRooftopBar from "../pages/projects/ongoing/botany-rooftop-bar/page";
-import AnantapurResidence from "../pages/projects/ongoing/anantapur-residence/page";
-import LakeViewApartment from "../pages/projects/ongoing/lake-view-apartment/page";
+// Residential project detail pages
+const VillaMaaya = lazy(() => import("../pages/projects/residential/villa-maaya/page"));
+const LevitatingHouse = lazy(() => import("../pages/projects/residential/levitating-house/page"));
+const KabiniHouse = lazy(() => import("../pages/projects/residential/kabini-house/page"));
+const VillaNirvaana = lazy(() => import("../pages/projects/residential/villa-nirvaana/page"));
+const VillaPrana = lazy(() => import("../pages/projects/residential/villa-prana/page"));
+const ChodhaResidence = lazy(() => import("../pages/projects/residential/chodha-residence/page"));
+const AroraHouse = lazy(() => import("../pages/projects/residential/arora-house/page"));
 
-// Unbuilt project pages (existing detail pages reused)
-import ETV from "../pages/projects/unbuilt/etv/page";
-import Ambience from "../pages/projects/unbuilt/ambience/page";
-import Mandala from "../pages/projects/unbuilt/mandala/page";
-import MIT from "../pages/projects/unbuilt/mit/page";
-import TajYeshwanthpur from "../pages/projects/unbuilt/taj-yeshwanthpur/page";
-import Bellevue from "../pages/projects/unbuilt/bellevue/page";
-import HiltonClinx from "../pages/projects/unbuilt/hilton-clinx/page";
-import MercaraHouse from "../pages/projects/unbuilt/mercara-house/page";
+// Hospitality project detail pages
+const Kaze = lazy(() => import("../pages/projects/hospitality/kaze/page"));
+const Speakeasy = lazy(() => import("../pages/projects/hospitality/speakeasy/page"));
+const Sanctum = lazy(() => import("../pages/projects/hospitality/sanctum/page"));
+const Rubaiyat = lazy(() => import("../pages/projects/hospitality/rubaiyat/page"));
+const PumaSocialClub = lazy(() => import("../pages/projects/hospitality/puma-social-club/page"));
+const TapasMe = lazy(() => import("../pages/projects/hospitality/tapas-me/page"));
+const TheOpenBox = lazy(() => import("../pages/projects/hospitality/the-open-box/page"));
+const TajWestend = lazy(() => import("../pages/projects/hospitality/taj-westend/page"));
 
-// Prefab
-import ZenDen from "../pages/projects/prefab/zen-den/page";
-import Blog from "../pages/blog/page";
+// Commercial project detail pages
+const SanctuaryOffice = lazy(() => import("../pages/projects/commercial/sanctuary-office/page"));
+
+// Ongoing project detail pages
+const EkaraResort = lazy(() => import("../pages/projects/hospitality/ekara-resort/page"));
+const NagarholeResort = lazy(() => import("../pages/projects/hospitality/nagarhole-resort/page"));
+const KarnatakaGolfAssociation = lazy(() => import("../pages/projects/commercial/karnataka-golf-association/page"));
+const Marina = lazy(() => import("../pages/projects/residential/marina/page"));
+const Shobhit = lazy(() => import("../pages/projects/residential/shobhit/page"));
+const VistaDoMarApartments = lazy(() => import("../pages/projects/residential/vista-do-mar-apartments/page"));
+const EkaSiteDevelopment = lazy(() => import("../pages/projects/residential/eka-site-development/page"));
+const BotanyRooftopBar = lazy(() => import("../pages/projects/ongoing/botany-rooftop-bar/page"));
+const AnantapurResidence = lazy(() => import("../pages/projects/ongoing/anantapur-residence/page"));
+const LakeViewApartment = lazy(() => import("../pages/projects/ongoing/lake-view-apartment/page"));
+
+// Unbuilt project detail pages
+const ETV = lazy(() => import("../pages/projects/unbuilt/etv/page"));
+const Ambience = lazy(() => import("../pages/projects/unbuilt/ambience/page"));
+const Mandala = lazy(() => import("../pages/projects/unbuilt/mandala/page"));
+const MIT = lazy(() => import("../pages/projects/unbuilt/mit/page"));
+const TajYeshwanthpur = lazy(() => import("../pages/projects/unbuilt/taj-yeshwanthpur/page"));
+const Bellevue = lazy(() => import("../pages/projects/unbuilt/bellevue/page"));
+const HiltonClinx = lazy(() => import("../pages/projects/unbuilt/hilton-clinx/page"));
+const MercaraHouse = lazy(() => import("../pages/projects/unbuilt/mercara-house/page"));
+
+// Prefab project detail pages
+const ZenDen = lazy(() => import("../pages/projects/prefab/zen-den/page"));
 
 const routes: RouteObject[] = [
   { path: "/", element: <Home /> },
@@ -144,6 +152,7 @@ const routes: RouteObject[] = [
   { path: "/clients", element: <Clients /> },
   { path: "/contact", element: <ContactPage /> },
   { path: "/blog", element: <Blog /> },
+  { path: "/blog/:slug*", element: <BlogArticle /> },
   { path: "/thank-you", element: <ThankYou /> },
   { path: "/privacy-policy", element: <PrivacyPolicy /> },
   { path: "/terms", element: <TermsAndConditions /> },
