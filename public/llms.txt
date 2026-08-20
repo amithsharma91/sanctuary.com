@@ -11,7 +11,13 @@
 - Phone: +91 98450 03452
 - Email: anshul@sanctuaryarch.com
 - Business Hours: Monday to Friday, 9:30 AM - 6:30 PM
-- Website: https://www.sanctuaryarch.com/
+- Website: [https://www.sanctuaryarch.com/](https://www.sanctuaryarch.com/)
+
+## About
+
+- [About Sanctuary](https://www.sanctuaryarch.com/about)
+- [Clients](https://www.sanctuaryarch.com/clients)
+- [Testimonials](https://www.sanctuaryarch.com/testimonials)
 
 ## Services
 
@@ -24,27 +30,28 @@
 
 ## Projects
 
-- Completed: https://www.sanctuaryarch.com/projects/completed
-- Ongoing: https://www.sanctuaryarch.com/projects/ongoing
-- Unbuilt: https://www.sanctuaryarch.com/projects/unbuilt
-- Residential: https://www.sanctuaryarch.com/projects/residential
-- Hospitality: https://www.sanctuaryarch.com/projects/hospitality
-- Commercial: https://www.sanctuaryarch.com/projects/commercial
-- Prefab: https://www.sanctuaryarch.com/projects/prefab
+- [All Projects](https://www.sanctuaryarch.com/projects)
+- [Completed Projects](https://www.sanctuaryarch.com/projects/completed)
+- [Ongoing Projects](https://www.sanctuaryarch.com/projects/ongoing)
+- [Unbuilt Projects](https://www.sanctuaryarch.com/projects/unbuilt)
+- [Residential Projects](https://www.sanctuaryarch.com/projects/residential)
+- [Hospitality Projects](https://www.sanctuaryarch.com/projects/hospitality)
+- [Commercial Projects](https://www.sanctuaryarch.com/projects/commercial)
+- [Prefab Projects](https://www.sanctuaryarch.com/projects/prefab)
 
-## Key pages
+## Gallery & Blog
 
-- Home: https://www.sanctuaryarch.com/
-- Gallery: https://www.sanctuaryarch.com/gallery
-- About: https://www.sanctuaryarch.com/about
-- Clients: https://www.sanctuaryarch.com/clients
-- Testimonials: https://www.sanctuaryarch.com/testimonials
-- Contact: https://www.sanctuaryarch.com/contact
-- Journal: https://www.sanctuaryarch.com/blog
+- [Gallery](https://www.sanctuaryarch.com/gallery)
+- [Blog](https://www.sanctuaryarch.com/blog)
+
+## Contact & Resources
+
+- [Contact](https://www.sanctuaryarch.com/contact)
+- [Sitemap](https://www.sanctuaryarch.com/sitemap.xml)
 
 ## Official social profiles
 
-- Instagram: https://www.instagram.com/sanctuaryarchi2?igsh=dXlubWpraWg2cG16
-- LinkedIn: https://www.linkedin.com/in/anshul-chodha-a354b528
-- Facebook: https://www.facebook.com/share/1D9hzXDumo/
-- Justdial: https://www.justdial.com/Bangalore/Sanctuary-Architects-Designers-Binny-Crescent-Benson-Town-Benson-Town/080PXX80-XX80-181009135821-E2H9_BZDET
+- [Instagram](https://www.instagram.com/sanctuaryarchi2?igsh=dXlubWpraWg2cG16)
+- [LinkedIn](https://www.linkedin.com/in/anshul-chodha-a354b528)
+- [Facebook](https://www.facebook.com/share/1D9hzXDumo/)
+- [Justdial](https://www.justdial.com/Bangalore/Sanctuary-Architects-Designers-Binny-Crescent-Benson-Town-Benson-Town/080PXX80-XX80-181009135821-E2H9_BZDET)
