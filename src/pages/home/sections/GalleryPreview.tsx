@@ -1,6 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { allGalleryImages, type GalleryImage } from "@/mocks/gallerySync";
+import { cloudinarySrcSet, resolveOptimizedImage } from "@/utils/imageDelivery";
+
+const GALLERY_WIDTHS = [480, 768, 1024, 1280];
+const GALLERY_SIZES = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
 
 /**
  * Loads the natural dimensions of an image without attaching it to the DOM.
@@ -116,7 +120,9 @@ export default function GalleryPreview() {
                 {/* Container controls the size — always landscape aspect ratio */}
                 <div className="w-full aspect-[4/3] overflow-hidden">
                   <img
-                    src={image.src}
+                    src={resolveOptimizedImage(image.src)}
+                    srcSet={cloudinarySrcSet(image.src, GALLERY_WIDTHS)}
+                    sizes={GALLERY_SIZES}
                     alt={`${image.projectName} — ${image.category}`}
                     className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"

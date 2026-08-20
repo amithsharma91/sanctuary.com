@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { cloudinarySrcSet } from "@/utils/imageDelivery";
+
+const CTA_BACKGROUND =
+  "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014640/COVER_PHOTO_nqhtcx.jpg";
+const CTA_WIDTHS = [480, 768, 1024, 1440, 1920];
 
 export default function CTASection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,8 +26,11 @@ export default function CTASection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786014640/COVER_PHOTO_nqhtcx.jpg"
+          src={CTA_BACKGROUND}
+          srcSet={cloudinarySrcSet(CTA_BACKGROUND, CTA_WIDTHS)}
+          sizes="100vw"
           alt=""
+          loading="lazy"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/70" />

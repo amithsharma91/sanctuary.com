@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { clients } from "@/mocks/clients";
+import { resolveOptimizedImage } from "@/utils/imageDelivery";
 
 export default function TrustedBy() {
   const [isVisible, setIsVisible] = useState(false);
@@ -74,7 +75,7 @@ export default function TrustedBy() {
               {client.logo ? (
                 <div className="h-8 md:h-10 lg:h-11 w-24 md:w-28 lg:w-32 flex items-center justify-center">
                   <img
-                    src={client.logo}
+                    src={resolveOptimizedImage(client.logo)}
                     alt={index < clients.length ? `${client.name} logo` : ""}
                     className="max-h-full max-w-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                     loading="lazy"

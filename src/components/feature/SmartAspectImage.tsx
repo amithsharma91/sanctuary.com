@@ -1,6 +1,11 @@
 import { useState, type SyntheticEvent } from "react";
+import { cloudinarySrcSet, resolveOptimizedImage } from "@/utils/imageDelivery";
 
 type AspectMode = "landscape" | "square" | "portrait";
+
+// Responsive card grids: 1 column mobile, 2 columns tablet, 3 columns desktop.
+const DEFAULT_SIZES = "(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw";
+const DEFAULT_WIDTHS = [480, 768, 1024, 1280];
 
 const ASPECT_CLASS: Record<AspectMode, string> = {
   // Landscape architectural photography gets a clean premium 3:2 container.
@@ -18,6 +23,8 @@ interface SmartAspectImageProps {
   eager?: boolean;
   /** Optional fixed aspect-ratio container class (e.g. "aspect-[16/10]") that overrides automatic orientation detection. */
   fixedAspect?: string;
+  /** Optional responsive sizes descriptor; defaults to the shared card grid. */
+  sizes?: string;
 }
 
 /**
@@ -34,6 +41,7 @@ export default function SmartAspectImage({
   className = "",
   eager = false,
   fixedAspect,
+  sizes = DEFAULT_SIZES,
 }: SmartAspectImageProps) {
   const [mode, setMode] = useState<AspectMode>("landscape");
 
@@ -47,9 +55,13 @@ export default function SmartAspectImage({
     else setMode("square");
   };
 
+  const resolvedSrc = resolveOptimizedImage(src);
+
   return (
     <img
-      src={src}
+      src={resolvedSrc}
+      srcSet={cloudinarySrcSet(resolvedSrc, DEFAULT_WIDTHS)}
+      sizes={sizes}
       alt={alt}
       onLoad={handleLoad}
       loading={eager ? "eager" : "lazy"}

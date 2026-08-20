@@ -1,5 +1,10 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
+import { cloudinarySrcSet } from "@/utils/imageDelivery";
+
+const HERO_IMAGE =
+  "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786793653/cover_photo_2_qiygcd_gawujq.jpg";
+const HERO_WIDTHS = [480, 768, 1024, 1440, 1920];
 
 export default function Hero() {
   const [revealed, setRevealed] = useState(false);
@@ -79,7 +84,9 @@ export default function Hero() {
             }
           >
             <img
-              src="https://res.cloudinary.com/dnyvkptxb/image/upload/v1786793653/cover_photo_2_qiygcd_gawujq.jpg"
+              src={HERO_IMAGE}
+              srcSet={cloudinarySrcSet(HERO_IMAGE, HERO_WIDTHS)}
+              sizes="100vw"
               alt="Sanctuary Architects & Designers — Luxury Architecture"
               loading="eager"
               fetchPriority="high"

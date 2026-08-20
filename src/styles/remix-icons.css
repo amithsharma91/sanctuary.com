@@ -1,0 +1,90 @@
+@font-face {
+  font-family: remixicon;
+  src: url('../assets/fonts/remixicon.woff2') format('woff2');
+  font-display: swap;
+}
+
+[class*=" ri-"],
+[class^=ri-] {
+  font-family: remixicon !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ri-arrow-down-s-line:before { content: "\ea4e"; }
+.ri-arrow-left-s-line:before { content: "\ea64"; }
+.ri-arrow-right-line:before { content: "\ea6c"; }
+.ri-arrow-right-s-line:before { content: "\ea6e"; }
+.ri-arrow-right-up-line:before { content: "\ea70"; }
+.ri-arrow-up-line:before { content: "\ea76"; }
+.ri-book-open-line:before { content: "\eadb"; }
+.ri-building-2-line:before { content: "\eb09"; }
+.ri-building-3-line:before { content: "\eb0b"; }
+.ri-building-4-line:before { content: "\eb0d"; }
+.ri-building-line:before { content: "\eb0f"; }
+.ri-camera-line:before { content: "\eb31"; }
+.ri-check-line:before { content: "\eb7b"; }
+.ri-close-line:before { content: "\eb99"; }
+.ri-compass-3-line:before { content: "\ebbe"; }
+.ri-contrast-drop-2-line:before { content: "\ebd6"; }
+.ri-customer-service-line:before { content: "\ec0e"; }
+.ri-door-lock-line:before { content: "\ec4a"; }
+.ri-drop-line:before { content: "\ec6a"; }
+.ri-earth-line:before { content: "\ec7a"; }
+.ri-external-link-line:before { content: "\ecaf"; }
+.ri-facebook-line:before { content: "\ecbd"; }
+.ri-film-line:before { content: "\ed21"; }
+.ri-fire-line:before { content: "\ed33"; }
+.ri-flashlight-line:before { content: "\ed3d"; }
+.ri-flask-line:before { content: "\ed3f"; }
+.ri-flight-takeoff-line:before { content: "\ed43"; }
+.ri-gamepad-line:before { content: "\edab"; }
+.ri-goblet-line:before { content: "\edd3"; }
+.ri-group-line:before { content: "\ede3"; }
+.ri-heart-line:before { content: "\ee0f"; }
+.ri-heart-pulse-line:before { content: "\ee11"; }
+.ri-home-4-line:before { content: "\ee1d"; }
+.ri-home-smile-line:before { content: "\ee2f"; }
+.ri-hospital-line:before { content: "\ee37"; }
+.ri-hotel-line:before { content: "\ee3b"; }
+.ri-hourglass-line:before { content: "\f339"; }
+.ri-instagram-line:before { content: "\ee66"; }
+.ri-key-2-line:before { content: "\ee6f"; }
+.ri-landscape-line:before { content: "\ee7d"; }
+.ri-layout-line:before { content: "\ee95"; }
+.ri-leaf-line:before { content: "\eea3"; }
+.ri-lightbulb-flash-line:before { content: "\eea8"; }
+.ri-linkedin-line:before { content: "\eeb6"; }
+.ri-mail-line:before { content: "\eef6"; }
+.ri-mail-send-line:before { content: "\eefc"; }
+.ri-map-2-line:before { content: "\ef06"; }
+.ri-map-pin-line:before { content: "\ef14"; }
+.ri-mental-health-line:before { content: "\ef30"; }
+.ri-moon-line:before { content: "\ef75"; }
+.ri-palette-line:before { content: "\efc5"; }
+.ri-pencil-ruler-2-line:before { content: "\efe2"; }
+.ri-phone-line:before { content: "\efec"; }
+.ri-psychotherapy-line:before { content: "\f033"; }
+.ri-quill-pen-line:before { content: "\f04a"; }
+.ri-recycle-line:before { content: "\f05e"; }
+.ri-restaurant-line:before { content: "\f084"; }
+.ri-ruler-line:before { content: "\f0a3"; }
+.ri-service-line:before { content: "\f0e2"; }
+.ri-shape-line:before { content: "\f0f2"; }
+.ri-shapes-line:before { content: "\f3db"; }
+.ri-shield-check-line:before { content: "\f100"; }
+.ri-smartphone-line:before { content: "\f15a"; }
+.ri-sofa-line:before { content: "\f41e"; }
+.ri-stack-line:before { content: "\f181"; }
+.ri-store-2-line:before { content: "\f1a5"; }
+.ri-sun-line:before { content: "\f1bf"; }
+.ri-t-shirt-line:before { content: "\f1d9"; }
+.ri-temp-hot-line:before { content: "\f1f4"; }
+.ri-tools-line:before { content: "\f21b"; }
+.ri-user-star-line:before { content: "\f276"; }
+.ri-vip-crown-line:before { content: "\f28e"; }
+.ri-water-flash-line:before { content: "\f2b0"; }
+.ri-whatsapp-line:before { content: "\f2bc"; }
+.ri-windy-line:before { content: "\f2ca"; }
+

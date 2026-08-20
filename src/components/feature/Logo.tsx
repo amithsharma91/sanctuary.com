@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { resolveOptimizedImage } from "@/utils/imageDelivery";
 
 const logoUrl = "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/e2f8a5e4-fa2a-4830-bacb-5677e69921b9_compressed_20854-removebg-preview-1.webp";
 
@@ -20,7 +21,7 @@ export default function Logo({ className = "", alt = "Sanctuary Architects & Des
 
   return (
     <img
-      src={logoUrl}
+      src={resolveOptimizedImage(logoUrl)}
       alt={alt}
       className={`object-contain ${className}`}
       loading="eager"

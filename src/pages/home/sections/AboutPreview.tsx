@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { resolveOptimizedImage } from "@/utils/imageDelivery";
+
+const ABOUT_STUDIO_IMAGE =
+  "https://readdy.ai/api/search-image?query=Luxury%20architectural%20design%20studio%20interior%2C%20warm%20wood%20and%20stone%20office%20space%2C%20large%20drafting%20table%20with%20architectural%20plans%2C%20natural%20light%20from%20large%20windows%2C%20minimalist%20elegant%20workspace%2C%20design%20sketches%20on%20walls%2C%20sophisticated%20creative%20atmosphere%2C%20warm%20earth%20tones%2C%20editorial%20interior%20photography%2C%20serene%20professional%20environment&width=900&height=1100&seq=about-preview-studio&orientation=portrait";
 
 export default function AboutPreview() {
   const [isVisible, setIsVisible] = useState(false);
@@ -84,7 +88,7 @@ export default function AboutPreview() {
           >
             <div className="image-reveal rounded-lg">
               <img
-                src="https://readdy.ai/api/search-image?query=Luxury%20architectural%20design%20studio%20interior%2C%20warm%20wood%20and%20stone%20office%20space%2C%20large%20drafting%20table%20with%20architectural%20plans%2C%20natural%20light%20from%20large%20windows%2C%20minimalist%20elegant%20workspace%2C%20design%20sketches%20on%20walls%2C%20sophisticated%20creative%20atmosphere%2C%20warm%20earth%20tones%2C%20editorial%20interior%20photography%2C%20serene%20professional%20environment&width=900&height=1100&seq=about-preview-studio&orientation=portrait"
+                src={resolveOptimizedImage(ABOUT_STUDIO_IMAGE)}
                 alt="Sanctuary Architects & Designers — design studio in Bangalore"
                 loading="lazy"
                 className="w-full aspect-[4/5] object-cover rounded-lg"
