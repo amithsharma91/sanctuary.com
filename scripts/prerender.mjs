@@ -5,7 +5,7 @@
 // renderToPipeableStream, injecting each page's <PageMeta> head values into the
 // built HTML template. Routes without a matching page are not emitted, so once
 // the Vercel catch-all rewrite is removed unknown URLs return a real 404.
-import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, rmSync, readdirSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Writable } from "node:stream";
@@ -210,6 +210,24 @@ try {
   const { takeServerHead } = await vite.ssrLoadModule("/src/components/feature/serverHead.ts");
   const template = readFileSync(templatePath, "utf8");
 
+  const cssAssetDir = join(outDir, "assets");
+  const cssAssets = readdirSync(cssAssetDir).filter((f) => /^index-[A-Za-z0-9_-]+\.css$/.test(f));
+  if (cssAssets.length !== 1) {
+    throw new Error(`expected exactly one index-*.css asset, found: ${cssAssets.join(", ") || "none"}`);
+  }
+  const criticalCss = readFileSync(join(cssAssetDir, cssAssets[0]), "utf8");
+  if (criticalCss.includes("</style")) {
+    throw new Error("refusing to inline CSS containing </style");
+  }
+  const stylesheetLinkRe = /<link\s+rel="stylesheet"[^>]*href="\/assets\/index-[A-Za-z0-9_-]+\.css"[^>]*>/;
+  if (!stylesheetLinkRe.test(template)) {
+    throw new Error("homepage template stylesheet link not found - cannot inline critical CSS");
+  }
+  const homepageTemplate = template.replace(
+    stylesheetLinkRe,
+    `<style data-critical-homepage-css>\n${criticalCss}\n</style>`
+  );
+
   const inventory = buildInventory();
   console.log(`[prerender] inventory: ${inventory.length} candidate routes`);
 
@@ -250,7 +268,8 @@ try {
       }
     }
 
-    const finalHtml = assembleHtml(template, html, head, seo);
+    const routeTemplate = path === "/" ? homepageTemplate : template;
+    const finalHtml = assembleHtml(routeTemplate, html, head, seo);
     const outFile = outputPathFor(path);
     mkdirSync(dirname(outFile), { recursive: true });
     writeFileSync(outFile, finalHtml, "utf8");
