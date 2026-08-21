@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { cloudinarySrcSet } from "@/utils/imageDelivery";
+import { cloudinaryAvifSrcSet, cloudinarySrcSet } from "@/utils/imageDelivery";
 
 const HERO_IMAGE =
   "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786793653/cover_photo_2_qiygcd_gawujq.jpg";
@@ -83,15 +83,23 @@ export default function Hero() {
                 : { transform: "translate(0px, 0px) scale(1.02)" }
             }
           >
-            <img
-              src={HERO_IMAGE}
-              srcSet={cloudinarySrcSet(HERO_IMAGE, HERO_WIDTHS)}
-              sizes="100vw"
-              alt="Sanctuary Architects & Designers — Luxury Architecture"
-              loading="eager"
-              fetchPriority="high"
-              className="w-full h-full object-cover object-center md:object-top"
-            />
+            <picture className="block w-full h-full">
+              <source
+                type="image/avif"
+                srcSet={cloudinaryAvifSrcSet(HERO_IMAGE, HERO_WIDTHS)}
+                sizes="100vw"
+              />
+              <img
+                src={HERO_IMAGE}
+                srcSet={cloudinarySrcSet(HERO_IMAGE, HERO_WIDTHS)}
+                sizes="100vw"
+                alt="Sanctuary Architects & Designers — Luxury Architecture"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                className="w-full h-full object-cover object-center md:object-top"
+              />
+            </picture>
           </div>
         </div>
       </div>

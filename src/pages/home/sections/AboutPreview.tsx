@@ -1,9 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { resolveOptimizedImage } from "@/utils/imageDelivery";
+import { resolveOptimizedImage, optimizedVariantSrcSet } from "@/utils/imageDelivery";
 
 const ABOUT_STUDIO_IMAGE =
   "https://readdy.ai/api/search-image?query=Luxury%20architectural%20design%20studio%20interior%2C%20warm%20wood%20and%20stone%20office%20space%2C%20large%20drafting%20table%20with%20architectural%20plans%2C%20natural%20light%20from%20large%20windows%2C%20minimalist%20elegant%20workspace%2C%20design%20sketches%20on%20walls%2C%20sophisticated%20creative%20atmosphere%2C%20warm%20earth%20tones%2C%20editorial%20interior%20photography%2C%20serene%20professional%20environment&width=900&height=1100&seq=about-preview-studio&orientation=portrait";
+
+const ABOUT_STUDIO_SRC = resolveOptimizedImage(ABOUT_STUDIO_IMAGE);
+const ABOUT_STUDIO_SRCSET = optimizedVariantSrcSet(ABOUT_STUDIO_SRC, [480, 640, 768, 960]);
+// Full-width column below the lg breakpoint (viewport minus px-6 gutters),
+// half-width column above it (half the viewport minus the lg:px-14 gutter).
+const ABOUT_STUDIO_SIZES = "(max-width: 1024px) calc(100vw - 48px), calc(50vw - 56px)";
 
 export default function AboutPreview() {
   const [isVisible, setIsVisible] = useState(false);
@@ -88,9 +94,14 @@ export default function AboutPreview() {
           >
             <div className="image-reveal rounded-lg">
               <img
-                src={resolveOptimizedImage(ABOUT_STUDIO_IMAGE)}
+                src={ABOUT_STUDIO_SRC}
+                srcSet={ABOUT_STUDIO_SRCSET}
+                sizes={ABOUT_STUDIO_SIZES}
+                width={1275}
+                height={1591}
                 alt="Sanctuary Architects & Designers — design studio in Bangalore"
                 loading="lazy"
+                decoding="async"
                 className="w-full aspect-[4/5] object-cover rounded-lg"
               />
             </div>

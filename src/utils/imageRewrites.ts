@@ -1,7 +1,7 @@
 // Optimized assets live in public/optimized so their stable /optimized/*.webp
 // URLs work identically in the prerendered SSR HTML and the client bundle.
 
-const OPTIMIZED_BASE = "/optimized/";
+export const OPTIMIZED_BASE = "/optimized/";
 
 const HELLOREADDY_BASE = "https://storage.helloreaddy.io/project_files/76dce7c4-6caa-4272-98e8-4149c442ecfc/";
 
