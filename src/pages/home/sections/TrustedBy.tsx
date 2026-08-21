@@ -76,8 +76,8 @@ export default function TrustedBy() {
                 <div className="h-8 md:h-10 lg:h-11 w-24 md:w-28 lg:w-32 flex items-center justify-center">
                   <img
                     src={resolveOptimizedImage(client.logo)}
-                    srcSet={optimizedVariantSrcSet(resolveOptimizedImage(client.logo), [64, 96, 128])}
-                    sizes="128px"
+                    srcSet={optimizedVariantSrcSet(resolveOptimizedImage(client.logo), [64, 96])}
+                    sizes="96px"
                     alt={index < clients.length ? `${client.name} logo` : ""}
                     className="max-h-full max-w-full object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                     loading="lazy"

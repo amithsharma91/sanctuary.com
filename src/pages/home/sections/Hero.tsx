@@ -6,6 +6,11 @@ const HERO_IMAGE =
   "https://res.cloudinary.com/dnyvkptxb/image/upload/v1786793653/cover_photo_2_qiygcd_gawujq.jpg";
 const HERO_WIDTHS = [480, 768, 1024, 1440, 1920];
 
+// Single source of truth for the AVIF ladder: consumed by the <source> below
+// AND re-exported for the prerender script's <link rel="preload" imagesrcset>,
+// so the preload can never drift out of sync with what the browser selects.
+export const HERO_AVIF_SRCSET = cloudinaryAvifSrcSet(HERO_IMAGE, HERO_WIDTHS, 60);
+
 export default function Hero() {
   const [revealed, setRevealed] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
@@ -86,7 +91,7 @@ export default function Hero() {
             <picture className="block w-full h-full">
               <source
                 type="image/avif"
-                srcSet={cloudinaryAvifSrcSet(HERO_IMAGE, HERO_WIDTHS)}
+                srcSet={HERO_AVIF_SRCSET}
                 sizes="100vw"
               />
               <img

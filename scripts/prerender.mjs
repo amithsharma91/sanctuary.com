@@ -223,9 +223,19 @@ try {
   if (!stylesheetLinkRe.test(template)) {
     throw new Error("homepage template stylesheet link not found - cannot inline critical CSS");
   }
+  // Hero LCP preload: the <picture> sits ~50% into the rendered document, so
+  // the preload scanner only finds it after streaming the whole head + body
+  // prefix. Mirror the hero's AVIF ladder (same exported constant the <source>
+  // uses) in a head preload so the fetch starts at first byte. imagesrcset with
+  // identical URLs lets supporting browsers dedupe against the picture-selected
+  // candidate; no href means browsers without imagesrcset skip it entirely.
+  const { HERO_AVIF_SRCSET } = await vite.ssrLoadModule("/src/pages/home/sections/Hero.tsx");
+  const heroPreload =
+    `    <link rel="preload" as="image" fetchpriority="high" imagesizes="100vw"` +
+    ` imagesrcset="${escapeAttr(HERO_AVIF_SRCSET)}" />\n`;
   const homepageTemplate = template.replace(
     stylesheetLinkRe,
-    `<style data-critical-homepage-css>\n${criticalCss}\n</style>`
+    `${heroPreload}<style data-critical-homepage-css>\n${criticalCss}\n</style>`
   );
 
   const inventory = buildInventory();

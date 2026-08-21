@@ -19,14 +19,16 @@ const ALREADY_TRANSFORMED_RE = /^[a-z0-9_]+,/;
 function cloudinaryTransformed(
   src: string,
   width: number,
-  format: "auto" | "avif"
+  format: "auto" | "avif",
+  quality?: number
 ): string {
   const idx = src.indexOf(CLOUDINARY_UPLOAD_MARKER);
   if (idx === -1) return src;
   const rest = src.slice(idx + CLOUDINARY_UPLOAD_MARKER.length);
   if (ALREADY_TRANSFORMED_RE.test(rest)) return src;
   const base = src.slice(0, idx + CLOUDINARY_UPLOAD_MARKER.length);
-  return `${base}${format === "avif" ? "f_avif" : "f_auto"},q_auto,c_scale,w_${width}/${rest}`;
+  const q = quality === undefined ? "q_auto" : `q_${quality}`;
+  return `${base}${format === "avif" ? "f_avif" : "f_auto"},${q},c_scale,w_${width}/${rest}`;
 }
 
 /** Returns the src with an f_auto,q_auto,c_scale,w_<width> delivery transform injected. */
@@ -51,13 +53,15 @@ export function cloudinarySrcSet(
  * Builds an AVIF-only srcset for use inside <source type="image/avif">.
  * Browsers that select the source support AVIF by definition; unsupported
  * browsers fall through to the <img>'s regular f_auto srcset untouched.
+ * Pass an explicit quality (e.g. 60) to pin compression instead of q_auto.
  */
 export function cloudinaryAvifSrcSet(
   src: string,
-  widths: number[]
+  widths: number[],
+  quality?: number
 ): string | undefined {
   if (!src.includes(CLOUDINARY_UPLOAD_MARKER)) return undefined;
-  return widths.map((w) => `${cloudinaryTransformed(src, w, "avif")} ${w}w`).join(", ");
+  return widths.map((w) => `${cloudinaryTransformed(src, w, "avif", quality)} ${w}w`).join(", ");
 }
 
 /**
